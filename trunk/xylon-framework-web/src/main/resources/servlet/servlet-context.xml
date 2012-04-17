@@ -8,8 +8,6 @@
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/mvc 
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-	<!--  -->
-	<mvc:view-controller path="/hc_dk.html" view-name="/hc_dk" />
 	
 	<!-- 拦截器 -->
 	<mvc:interceptors>
@@ -42,7 +40,8 @@
 		<!-- 格式化数字 :  -->
 		<property name="numberToolAttribute" value="numberTool" />
 	</bean>
-	
+	<!-- 注解探测器 -->
+	<context:component-scan base-package="com.xylon.framework.web.action" />
 	<context:annotation-config />
 	<mvc:annotation-driven />
 </beans>
