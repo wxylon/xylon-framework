@@ -3,10 +3,10 @@
 ## 
 
 
-##	PageBarII ·­Ò³À¸£¨¿ÉÒÔ·Åµ½ÍøÒ³ÈÎÒâÎ»ÖÃ£©
-##	µ«±ØĞë£º
-##	1¡¢´«Èë$formnameÖ¸¶¨FormÃû³Æ¡£
-##	2¡¢½«ÒÔÏÂÈı¸öÒş²Ø×Ö¶Î¸´ÖÆµ½Ö¸¶¨µÄForm±íµ¥ÀïÃæ¡£
+##	PageBarII ç¿»é¡µæ ï¼ˆå¯ä»¥æ”¾åˆ°ç½‘é¡µä»»æ„ä½ç½®ï¼‰
+##	ä½†å¿…é¡»ï¼š
+##	1ã€ä¼ å…¥$formnameæŒ‡å®šFormåç§°ã€‚
+##	2ã€å°†ä»¥ä¸‹ä¸‰ä¸ªéšè—å­—æ®µå¤åˆ¶åˆ°æŒ‡å®šçš„Formè¡¨å•é‡Œé¢ã€‚
 ## 	<input type="hidden" name="actionType" value="0" id ="actionType">
 ## 	<input type="hidden" name="page" value="$!pageBean.page" id ="page">
 ## 	<input type="hidden" name="pageSize" value="$!pageBean.getPageSize()" id ="pageSize">
@@ -18,8 +18,8 @@
 	<table width="100%">
 		<tr>
 			<td align="center">
-	    <!--ÏÔÊ¾ $!pageBean.getStartNo() - $!pageBean.getEndNo() Ìõ-->
-	    Ã¿Ò³
+	    <!--æ˜¾ç¤º $!pageBean.getStartNo() - $!pageBean.getEndNo() æ¡-->
+	    æ¯é¡µ
 	    #if($type==1)
       	<input name="setPageSize" type="radio" value="10" #if ($!pageBean.getPageSize()==10) checked #else checked #end onClick="chkSubmit(1);" id ="setPageSize">10 
 		<input name="setPageSize" type="radio" value="20" #if ($!pageBean.getPageSize()==20) checked #end onClick="chkSubmit(1);" id ="setPageSize">20 
@@ -33,26 +33,26 @@
 		<input name="pageSize" type="radio" value="60" #if ($!pageBean.getPageSize()==60) checked #end onClick="chkSubmit(1);" id ="pageSize">60 
 		<input name="pageSize" type="radio" value="90" #if ($!pageBean.getPageSize()==90) checked #end onClick="chkSubmit(1);" id ="pageSize">90
 		#end
-		Ìõ
-	     ¹²$!pageBean.countÌõ
+		æ¡
+	     å…±$!pageBean.countæ¡
 	    #if($!pageBean.getPage()>1)
-	    <span style="cursor:pointer;color:#039" onclick="JavaScript:chkSubmit(1);"><u>Ê×Ò³</u></span>
-	    <span style="cursor:pointer;color:#039" onclick="JavaScript:chkSubmit(2);"><u>ÉÏÒ»Ò³</u></span>
+	    <span style="cursor:pointer;color:#039" onclick="JavaScript:chkSubmit(1);"><u>é¦–é¡µ</u></span>
+	    <span style="cursor:pointer;color:#039" onclick="JavaScript:chkSubmit(2);"><u>ä¸Šä¸€é¡µ</u></span>
 	    #else
-		<span >Ê×Ò³</span>
-		<span >ÉÏÒ»Ò³</span>
+		<span >é¦–é¡µ</span>
+		<span >ä¸Šä¸€é¡µ</span>
 		#end
 		#if ($!pageBean.getPage()<$!pageBean.getPages())
-	    <span style="cursor:pointer;color:#039" onclick="JavaScript:chkSubmit(3);"><u>ÏÂÒ»Ò³</u></span>
-	    <span style="cursor:pointer;color:#039" onclick="JavaScript:chkSubmit(4);"><u>Ä©Ò³</u></span>
+	    <span style="cursor:pointer;color:#039" onclick="JavaScript:chkSubmit(3);"><u>ä¸‹ä¸€é¡µ</u></span>
+	    <span style="cursor:pointer;color:#039" onclick="JavaScript:chkSubmit(4);"><u>æœ«é¡µ</u></span>
 	    #else
-		<span >ÏÂÒ»Ò³</span>
-		<span >Ä©Ò³</span>
+		<span >ä¸‹ä¸€é¡µ</span>
+		<span >æœ«é¡µ</span>
 		#end
-		µÚ$!pageBean.page/$!pageBean.getPages()Ò³
-		×ªµ½µÚ
+		ç¬¬$!pageBean.page/$!pageBean.getPages()é¡µ
+		è½¬åˆ°ç¬¬
 	    <input type="text" name="gotoPage" size="3" maxlength="4" value="$!pageBean.page" onKeyDown="if(event.keyCode==13){document.all('btn__page_jump').click();}" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" id ="gotoPage">
-	    Ò³
+	    é¡µ
 	    <input type="button" name="btn__page_jump" class="button3d" value="Go" onclick="JavaScript:chkSubmit(6);" id ="btn__page_jump">
 			</td>
 		</tr>
@@ -61,12 +61,12 @@
 		function chkSubmit (actionType){
 			var f = document.forms("$!{formname}");
 			if(f==null){
-				alert("²éÑ¯±íµ¥²»´æÔÚ£¡");
+				alert("æŸ¥è¯¢è¡¨å•ä¸å­˜åœ¨ï¼");
 				return false;
 			}
 			var pageS = f.pageSize;
 			if (pageS == null) {
-				alert("ÄãµÄ²éÑ¯±íµ¥ÀïÃ»ÓĞÒ»¸öhidden×Ö¶ÎpageSize");
+				alert("ä½ çš„æŸ¥è¯¢è¡¨å•é‡Œæ²¡æœ‰ä¸€ä¸ªhiddenå­—æ®µpageSize");
 				return false;
 			}
 			var ps = document.getElementsByName("setPageSize");
@@ -75,22 +75,22 @@
 			}
 			var pageItem = f.actionType;
 			if (pageItem == null) {
-				alert("ÄãµÄ²éÑ¯±íµ¥ÀïÃ»ÓĞÒ»¸öhidden×Ö¶ÎactionType");
+				alert("ä½ çš„æŸ¥è¯¢è¡¨å•é‡Œæ²¡æœ‰ä¸€ä¸ªhiddenå­—æ®µactionType");
 				return false;
 			}
 			var page = f.page;
 			if (page == null) {
-				alert("ÄãµÄ²éÑ¯±íµ¥ÀïÃ»ÓĞÒ»¸öhidden×Ö¶Îpage");
+				alert("ä½ çš„æŸ¥è¯¢è¡¨å•é‡Œæ²¡æœ‰ä¸€ä¸ªhiddenå­—æ®µpage");
 				return false;
 			}
 			pageItem.value = actionType;
 			if(pageItem.value==6){
 				if(document.getElementsByName("gotoPage")[0].value==""){
-					alert("Ìø×ªÒ³Êı²»ÄÜÎª¿Õ£¡");
+					alert("è·³è½¬é¡µæ•°ä¸èƒ½ä¸ºç©ºï¼");
 					document.getElementsByName("gotoPage")[0].focus();
 					return false;
 				}else if(document.getElementsByName("gotoPage")[0].value>$!pageBean.getPages()){
-					alert("Ìø×ªÒ³Êı²»ÄÜ´óÓÚ×ÜÒ³Êı£¡");
+					alert("è·³è½¬é¡µæ•°ä¸èƒ½å¤§äºæ€»é¡µæ•°ï¼");
 					document.getElementsByName("gotoPage")[0].focus();
 					return false;
 				}else{
