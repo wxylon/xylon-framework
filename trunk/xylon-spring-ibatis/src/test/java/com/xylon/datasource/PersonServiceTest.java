@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.xylon.ibatis.bean.Person;
-import org.xylon.ibatis.service.PersonService;
+import com.xylon.ibatis.bean.Person;
+import com.xylon.ibatis.service.PersonService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

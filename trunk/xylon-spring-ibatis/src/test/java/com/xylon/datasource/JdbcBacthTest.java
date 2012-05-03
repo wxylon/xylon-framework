@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.xylon.ibatis.bean.Person;
+import com.xylon.ibatis.bean.Person;
 
 public class JdbcBacthTest{
 	
