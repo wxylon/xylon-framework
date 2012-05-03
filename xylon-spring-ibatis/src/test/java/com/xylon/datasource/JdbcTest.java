@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.xylon.ibatis.bean.Person;
+import com.xylon.ibatis.bean.Person;
 
 public class JdbcTest{
 	public static void main(String[] args) {
