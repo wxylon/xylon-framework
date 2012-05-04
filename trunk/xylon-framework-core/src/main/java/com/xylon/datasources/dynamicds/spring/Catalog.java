@@ -7,6 +7,10 @@ import java.util.List;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 
+/**
+ * org.springframework.orm.ibatis.support.SqlMapClientDaoSupport
+ * @author Administrator
+ */
 public class Catalog extends SimpleJdbcDaoSupport {
    
    
