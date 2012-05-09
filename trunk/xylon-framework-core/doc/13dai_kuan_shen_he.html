@@ -1,0 +1,640 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>后台管理中心＞信息管理＞贷款管理＞贷款审核</title>
+<link rel="stylesheet" href="css/css.css" type="text/css">
+<link rel="stylesheet" href="css/center.css" type="text/css">
+<link type="text/css" href="js/extends/jquery.ui.all.css" rel="stylesheet" />
+<script language="javascript" type="text/javascript" src="js/extends/showDiv.js"></script>
+<script type="text/javascript" src="js/extends/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/extends/jquery.bgiframe-2.1.1.js"></script>
+<script type="text/javascript" src="js/extends/jquery.blockUI.js"></script>
+<script type="text/javascript" src="js/extends/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="js/extends/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="js/extends/ui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="js/extends/ui/jquery.ui.draggable.js"></script>
+<script type="text/javascript" src="js/extends/ui/jquery.ui.position.js"></script>
+<script type="text/javascript" src="js/extends/ui/jquery.ui.resizable.js"></script>
+<script type="text/javascript" src="js/extends/ui/jquery.ui.dialog.js"></script>
+<script type="text/javascript" src="js/extends/blockUI.js"></script>
+<script type="text/javascript" src="js/extends/jquery.effects.core.js"></script>
+<script type="text/javascript" src="js/extends/jquery.effects.blind.js></script>
+<script type="text/javascript" src="js/extends/jquery.effects.explode.js"></script>
+<style type="text/css">
+<!--
+.style1 {color: #FF00FF}
+-->
+</style>
+<script type="text/javascript">
+	//导出
+function exportExcel(){
+		var frm = document.getElementById('mainform');
+		var recordCount = document.getElementById('totalCount');
+		  if(recordCount.value < 1){
+		    alert("查询数据无结果，不能导出！");
+		    return;
+		  }		
+		frm.action="export.action";
+		frm.target="_self";
+		frm.submit();
+		frm.action="loanquery.action";
+	}	
+function chexiaobuchongshenqing(){
+	doSelect(12);
+}
+function qianben2bl(){
+	doSelect(11);
+}
+function qianben2qx(){
+	doSelect(10);
+}
+function qianxi2qb(){
+	doSelect(9);
+}
+function huankuanzhong2qb(){
+	doSelect(8);
+}
+function huankuanzhong2qx(){
+	doSelect(7);
+}
+function huankuanzhong2jq(){
+	doSelect(6);
+}
+function hezuofangjushen2hzftg(){
+	doSelect(5);
+}
+function qianxiqianben2hkz(){
+	doSelect(4);
+}
+function hezuofangtongguo2hkz(){
+	doSelect(3);
+}
+function chushentongguo2hzfjs(){
+	var reson1 = document.getElementById('jsreson1');
+	var reson2 = document.getElementById('jsreson2');
+	var reson1_result = 'false' ;
+	var reson2_result = 'true' ;
+	var var_resonid ='';
+	var var_resoncontent ='';
+ 
+	for(var i=0 ; i<reson1.size;i++){
+		if(reson1.options[i].selected){
+			reson1_result='true';
+			var_resonid=var_resonid+reson1.options[i].value+';' ;
+		}
+	}
+	if(reson2.value==''||reson2.value=='输入拒审理由'){
+		reson2_result='false';
+	}
+	if(reson1_result=='true' || reson2_result=='true'){
+		if(reson2_result=='true'){
+			var_resoncontent=reson2.value;
+		}
+		doSelectJushen(2,var_resonid,var_resoncontent);
+		return ;
+	}
+	alert('请选择拒审理由后再执行拒审操作');
+	return ;
+}
+	//select 4 jushen
+	function doSelectJushen(type,resonid, resoncontent){
+				var array=document.getElementsByName("ids");
+				var idArray="";
+				for(var i=0;i<array.length;i++){					
+					if(array[i].checked){
+						idArray=idArray+array[i].value+",";
+					}
+				}
+				if(idArray.length<=1){
+					alert("请选择企业后再执行操作！");
+					return;
+				}
+				document.getElementById("var_jsresonids").value = resonid ;
+				document.getElementById("var_jsresonContent").value = resoncontent ;
+				
+				document.mainform.action="/HcLoanAdmin/dispatchdo.action?type="+type+"&ids="+idArray;
+				document.mainform.submit();
+	}
+function chushentongguo2hzftg(){
+
+	var reson1 = document.getElementById('jsreson1');
+	var reson2 = document.getElementById('jsreson2');
+	var reson1_result = 'false' ;
+	var reson2_result = 'true' ;
+	for(var i=0 ; i<reson1.size;i++){
+		if(reson1.options[i].selected){
+			reson1_result='true';
+		}
+	}
+	if(reson2.value==''||reson2.value=='输入拒审理由'){
+		reson2_result='false';
+	}
+	if(reson1_result=='true' || reson2_result=='true'){
+		alert('审核通过不需选择拒审理由');
+		return ;
+	}
+doSelect(1);
+}
+function selectAll(v){
+	var ids = document.getElementsByName("ids");
+	for(var i=0;i<ids.length;i++){
+		ids[i].checked = v.checked;
+	}
+}
+//select 
+function doSelect(type,reson){
+	var array=document.getElementsByName("ids");
+	var idArray="";
+	for(var i=0;i<array.length;i++){					
+		if(array[i].checked){
+			idArray=idArray+array[i].value+",";
+		}
+	}
+	if(idArray.length<=1){
+		alert("请选择企业后再执行操作！");
+		return;
+	}
+	if(reson != null ){
+		document.getElementById("var_jsreson").value = reson ;
+	}
+	document.mainform.action="/HcLoanAdmin/dispatchdo.action?type="+type+"&ids="+idArray;
+	document.mainform.submit();
+}
+
+function noNumbers(e) { 
+	var keynum; 
+	var keychar; 
+	var numcheck; 
+	if(window.event){ // IE  
+  		keynum = e.keyCode; 
+  	} 
+	else if(e.which){ // Netscape/Firefox/Opera 
+  		keynum = e.which; 
+  	} 
+  	
+	keychar = String.fromCharCode(keynum); 
+	numcheck = /\d/; 
+	
+	return numcheck.test(keychar); 
+} 
+</script>
+<script type="text/javascript" src="http://style.org.hc360.com/js/build/source/core/hc.common.js" ></script>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="F7F7F7" class="grayborder1 tablemargin8">
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;后台管理中心＞信息管理＞贷款管理＞贷款审核</td>
+  </tr>
+</table>
+<form action="/HcLoanAdmin/loanquery.action" name="mainform" id="mainform" method="post">
+<input type="hidden" name="actionType" value="0" id="actionType">
+<input type="hidden" name="page" value="$!pageBean.page" id="page">
+<input type="hidden" name="pageSize" value="$!pageBean.getPageSize()">
+#if( $message1 ==1)
+	<script>
+		alert('操作成功') ;
+	</script>
+#end
+
+#if($message1 ==2)
+	<script>
+		alert('会员已重新提交此类贷款产品，不能再审核通过') ;
+	</script>
+#end
+
+#if($message1 ==22)
+	<script>
+		alert('不能同时选择同一家企业的多条相同贷款产品进行合作方通过审核，请重新选择。') ;
+	</script>
+#end
+
+#if($message1 ==3)
+	<script>
+		alert('贷款信息修改成功') ;
+	</script>
+#end
+<table width="100%" border="0" cellspacing="0" cellpadding="1">
+  <tr>
+    <td class="tb3d1">
+    <select name="typetime" >
+          <option value="1" #if($typetime==1) selected #end >申请时间</option>
+		  <option value="2" #if($typetime==2) selected #end  >初审时间</option>
+          <option value="3" #if($typetime==3) selected #end >终审时间</option>
+          <option value="4" #if($typetime==4) selected #end >服务费到期时间</option>
+      </select>
+        <DIV id=divStartDate style="POSITION: absolute"></DIV>
+      <INPUT readOnly maxLength=10 size=10 name="StartDate" value="$!StartDate">
+      <IMG onMouseUp="DatePicker('imgStartDate','divStartDate','frm.StartDate',null,null)" id=imgStartDate height=19 src="infor/images/calendar.gif" width=19 align=absMiddle border=0 name=imgStartDate>
+      到<DIV id=divEndDate style="POSITION: absolute"></DIV>
+      <INPUT readOnly maxLength=10 size=10 name="EndDate" value="$!EndDate">
+      <IMG onMouseUp="DatePicker('imgEndDate','divEndDate','frm.EndDate',null,null)" id=imgEndDate height=19 src="infor/images/calendar.gif" width=19 align=absMiddle border=0 name=imgEndDate>
+      <select name="typeusername">
+        <option value="1" #if($typeusername==1) selected="true" #end >申请企业用户名</option>
+        <option value="2" #if($typeusername==2) selected="true" #end >申请企业公司名称</option>
+        <option value="3" #if($typeusername==3) selected="true" #end >申请编号</option>
+        <option value="4" #if($typeusername==4) selected="true" #end >联保编号</option>
+      </select>
+      <input name="username" type="text" size="34"  maxlength="30"  value="$!username" />
+      <select name="loanstate"  >
+        <option value="99" #if($loanstate==99) selected="true" #end>审核状态</option>
+        <option value="0" #if($loanstate==0) selected="true" #end >未审核</option>
+        <option value="1" #if($loanstate==1) selected="true" #end>慧聪初审通过</option>
+        <option value="2" #if($loanstate==2) selected="true" #end>慧聪初审未通过</option>
+        <option value="3" #if($loanstate==3) selected="true" #end>合作方审核已通过</option>
+        <option value="4" #if($loanstate==4) selected="true" #end>合作方审核未通过</option>
+        <option value="5" #if($loanstate==5) selected="true" #end>还款中</option>
+        <option value="7" #if($loanstate==7) selected="true" #end>欠息</option>
+        <option value="8" #if($loanstate==8) selected="true" #end>欠本</option>
+        <option value="6" #if($loanstate==6) selected="true" #end>结清</option>
+        <option value="9" #if($loanstate==9) selected="true" #end>不良贷款</option>
+      </select></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellpadding="1" cellspacing="0" class="tablemargin8">
+  <tr>
+    <td class="tb3d1">
+    <select name="loanway" id="loanway" onchange="chgProduct(this.value, 99);chgMemberGrade(this.value, 99);saveChange(this);" >
+        <option value="99" #if($loanway==99) selected="true" #end>贷款渠道</option>
+        #foreach($channel in $channels)
+        	<option value="$!{channel.id}" #if($!{loanway}==$!{channel.id}) selected="true" #end>$!{channel.channelName}</option>
+	    #end
+      </select>
+      <select name="loanproduce" id="loanproduce"><option value="99">贷款产品</option></select>
+      <select name="usergrade" id="usergrade"><option value="99">积分等级</option></select>
+      <!-- 未选择产品渠道时，将锁定该按钮 -->
+      <select name="jiaofei" id="jiaofei" #if($loanway==99) disabled="disabled" #end >
+			<option value="99" #if($jiaofei==99) selected="true" #end >服务费交纳状态</option>
+          <option value="1" #if($jiaofei==1) selected="true" #end >服务费有效</option>
+          <option value="2" #if($jiaofei==2) selected="true" #end >服务费无效</option>
+      </select>
+      <select name="isotherin">
+		  <option value="99" #if($isotherin==99) selected="true" #end >是否有联保成员加入</option>
+          <option value="0" #if($isotherin==0) selected="true" #end >是</option>
+          <option value="1" #if($isotherin==1) selected="true" #end >否</option>
+      </select>
+      <select name="isdisplay">
+        <option value="99" #if($isdisplay==99) selected="true" #end >是否显示补充申请按钮</option>
+        <option value="0" #if($isdisplay==0) selected="true" #end >是</option>
+        <option value="1" #if($isdisplay==1) selected="true" #end >否</option>
+      </select>
+      <select name="ispass">
+        <option value="99" #if($ispass==99) selected="true" #end >是否绿色通行号会员</option>
+        <option value="1" #if($ispass==1) selected="true" #end >是</option>
+        <option value="0" #if($ispass==0) selected="true" #end >否</option>
+      </select>
+      <input type="submit" class="button3d" value="查询"/></td>
+  </tr>
+</table>
+<table width="100%" border="1" cellpadding="3" cellspacing="1" bordercolorlight="#BEBDBD" bordercolordark="#ffffff" class="tablemargin8" id="tabls">
+    <input type="hidden" id="totalCount" name="totalCount" value="$!pageBean.count" />
+    <tr>
+      <td width="26" align="center" bgcolor="#E4E4E4">&nbsp;</td>
+      <td width="50" align="center" bgcolor="#E4E4E4">申请编号</td>
+      <td width="239" align="center" bgcolor="#E4E4E4"><p>申请企业 </p></td>
+      <td width="150" align="center" bgcolor="#E4E4E4">会员类型</td>
+      <td width="271" align="center" bgcolor="#E4E4E4">贷款产品</td>
+      <td width="55" align="center" bgcolor="#E4E4E4">会员等级</td>
+      <td width="180" align="center" bgcolor="#E4E4E4">审核状态</td>
+      <td width="180" align="center" bgcolor="#E4E4E4">时间</td>
+      <td width="180" align="center" bgcolor="#E4E4E4">操作</td>
+    </tr>
+    #foreach($vo in $resultlst)
+    	<tr>
+    		<td align="center">
+    		<input  id="ids" name="ids" type="checkbox" 
+    		#if($!vo.isBlue==0) class="checkbox1" #end  
+    		 #if($!vo.isBlue==1) class="checkboxblue" #end 
+    		  value="$!vo.loanInfoId">
+        <br></td>
+        <td align="center">&nbsp;$!vo.loanInfoId</td>
+        <td align="left">
+        <a target="mainFrame" href="http://manage.b2b.hc360.com/b2bmanage/turbine/template/member%2Ccorp%2Ccompany_detail.html?providerId=$!vo.memberProId&dataFrom=1">$!vo.enterpriseName</a>
+            [$vo.memberName]
+            <br></br>
+        	#if($vo.gmIsValid == 0 && $vo.isGreen == 1 )
+        		绿色通行号：$!vo.greenNumber 
+        	#end
+        </td>
+        <td align="center">&nbsp;$!vo.memberTypeName</td>
+        <td align="center">
+        <a target="mainFrame" href="/HcLoanAdmin/touserloaninfo.action?loaninfoid=$!vo.loanInfoId&username=$!vo.memberName&pagetype=1&productid=$!vo.productId&wayid=$!vo.channelId">$!vo.channelName - $!vo.productName</a>
+        	#if($vo.isJointguarantee == 0 )
+        		(联保编号:$!vo.jointGuaranteeId)
+        	#end
+        </td>
+        <td align="center"  >
+        	#if($vo.isJointguarantee == 0 && $!vo.memberGrade != '' && $!vo.auditState !=0)
+        		<a class="alert_win" href="#">$!vo.memberGrade&nbsp;#if(${vo.memberIntegral})($!{vo.memberIntegral})#end</a>
+			        <div class="look_member_grade">
+			            <table>
+			                <thead>
+			                    <tr>
+			                        <th>联保成员名称</th>
+			                        <th>级别</th>
+			                    </tr>
+			                </thead>
+			                <tbody>
+			                    #foreach($gradevo in $!vo.memberGradeLst )
+			                       <tr>
+			                         <td>$!gradevo.enterpriseName [$!gradevo.memberName ]</td>
+			                         <td>$!{gradevo.gradeName}&nbsp;#if(${gradevo.memberIntegral})($!{gradevo.memberIntegral})#end</td>
+			                      </tr>
+			                    #end
+			                </tbody>
+			            </table>
+			        </div>
+        	#else 
+        		$!{vo.memberGrade}&nbsp;#if(${vo.memberIntegral})($!{vo.memberIntegral})#end
+        	#end 
+        </td>
+        <td align="center">
+        	#if($vo.auditState==2 || $vo.auditState ==4 )
+        		<a href="#" onClick="alert('拒审原因：'
+					#foreach($re in $!vo.rejectedReasonLst)
+						+ '\n&middot; $re'
+					#end
+            );return false">$!vo.auditStateName</a>
+        	 #else
+        	 	$!vo.auditStateName
+        	#end
+      </td>
+        
+	<td align="center">
+		<table width="100%" border="0" cellspacing="2" cellpadding="0">
+	        <tr>
+	          <td>申请时间：</td>
+	        </tr>
+	        <tr>
+	          <td>&nbsp;$!vo.applyTime</td>
+	        </tr>
+	        <tr>
+	          <td class="grayline">初审时间：</td>
+	        </tr>
+	        <tr>
+	          <td>&nbsp;$!vo.firsttrialTime</td>
+	        </tr>
+	        <tr>
+	          <td class="grayline"><p>终审时间：</p></td>
+	        </tr>
+	        <tr>
+	          <td>&nbsp;$!vo.lastinstanceTime</td>
+	        </tr>
+	        <tr>
+	          <td class="grayline">还款开始时间:</td>
+	        </tr>
+	        <tr>
+	          <td>&nbsp;$!vo.repaymentStartTime</td>
+	        </tr>
+	        <tr>
+	          <td class="grayline">还款完成时间:</td>
+	        </tr>
+	        <tr>
+	          <td>&nbsp;$!vo.repaymentTime</td>
+	        </tr>
+	        <tr>
+	          <td class="grayline">服务费到期时间:</td>
+	        </tr>
+	        <tr>
+	          <td>&nbsp;$!vo.jiaofeiendtime</td>
+	        </tr>
+	      </table>
+      </td>
+      <td align="center">&nbsp;
+      	#if($!vo.isJointguarantee == 0 && $!vo.isValidMember==0)
+	      <a target="mainFrame" href="/HcLoanAdmin/tolianbao.action?loaninfoid=$!vo.loanInfoId">管理联保成员</a><br>
+      	#end
+      	#if($!vo.auditState == 0 )
+	      <a target="mainFrame" href="/HcLoanAdmin/toloanupdate.action?loaninfoid=$!vo.loanInfoId&username=$!vo.memberName&pagetype=1&productid=$!vo.productId&wayid=$!vo.channelId">修改贷款申请</a><br>
+      	#end
+      	#if($!vo.auditState == 0 || $!vo.auditState == 2)
+	      <a target="mainFrame" href="/HcLoanAdmin/tochushen.action?loaninfoid=$!vo.loanInfoId">录入积分等级</a><br>
+      	#end
+      	  <a class="link_click"  href="javascript:void(1);" title="$!{vo.loanInfoId}">联系记录</a>
+    	</tr>
+    #end
+
+   </table>
+
+<table width="100%" border="0" cellspacing="2" cellpadding="2">
+  <tr>
+    <td width="40" align="center" bgcolor="#E4E4E4">
+    <input onclick="javascript:selectAll(this);" name="checkall" id="checkall" type="checkbox" class="checkbox2" value="checkbox">
+        <br>
+        <br>
+      <br>
+      全选<br>
+      <br>    </td>
+    <td width="312" align="center" bgcolor="#E4E4E4">
+    <input name="var_jsresonids"  id="var_jsresonids" type="hidden"  />
+    <input name="var_jsresonContent"  id="var_jsresonContent" type="hidden"  />
+      #if($loanstate==1 || $loanstate==3)
+    <select name="jsreson1" id="jsreson1"  multiple="multiple" size="$!reasonsHezuofangJushensize" class="flow0">
+        #foreach($reasona in $!reasonsHezuofangJushen)
+            <option value="$reasona.id" >$reasona.content</option>
+        #end
+     </select>
+          <input name="jsreson2"  id="jsreson2" type="text" size="50" value="输入拒审理由">
+    #end
+    </td>
+    <td width="361" align="center" bgcolor="#E4E4E4">
+    #if($loanstate==1)
+    <input type="button" class="button3d" onclick="javascript:chushentongguo2hzftg();" value="合作方通过">
+    <input type="button" class="button3d" onclick="javascript:chushentongguo2hzfjs();" value="合作方拒审">
+    #end
+    #if($loanstate==3)
+    <input type="button" class="button3d" onclick="javascript:chushentongguo2hzfjs();" value="合作方拒审">
+    <input type="button" class="button3d" onclick="javascript:hezuofangtongguo2hkz();" value="还款中">
+    #end  
+    #if($loanstate==4)
+    <input type="button" class="button3d" onclick="javascript:hezuofangjushen2hzftg();" value="合作方通过">
+    #end   
+    #if($loanstate==5)
+    <input type="button" class="button3d" onclick="javascript:huankuanzhong2jq();" value="结  清">
+    <input type="button" class="button3d" onclick="javascript:huankuanzhong2qx();" value="欠  息">
+    <input type="button" class="button3d" onclick="javascript:huankuanzhong2qb();" value="欠  本">
+    #end
+    #if($loanstate==7)
+    <input type="button" class="button3d" onclick="javascript:qianxiqianben2hkz();" value="还款中">
+    <input type="button" class="button3d" onclick="javascript:qianxi2qb();" value="欠  本">
+    #end 
+    #if($loanstate==8)
+    <input type="button" class="button3d" onclick="javascript:qianxiqianben2hkz();" value="还款中">
+    <input type="button" class="button3d" onclick="javascript:qianben2qx();" value="欠  息">
+    <input type="button" class="button3d" onclick="javascript:qianben2bl();" value="不良贷款">
+    #end                  
+	#if($loanway!=99)
+    <input  onclick="exportExcel();" type="button" class="button3d" value="导出贷款信息"></input>
+    #end
+    #if($isdisplay==0)
+    <input type="button" onclick="javascript:chexiaobuchongshenqing();" class="button3d" value="撤销补充申请按钮">
+    #end 
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td>#PageBarII1("mainform")</td></tr></table>
+  </form>
+  <script type="text/javascript" src="http://style.org.hc360.com/js/build/source/core/hc.control.js" ></script>
+</body>
+<!--会员等级查看浮框-->
+<style>
+.look_member_grade{display:none;position:absolute;width:200px;background:#fff}
+.look_member_grade table{width:100%;line-height:20px;border-collapse:collapse;text-align:center}
+.look_member_grade table,.look_member_grade table td,.look_member_grade table th{border:1px solid #ccc}
+</style>
+
+<script src="js/calendar.js"></script>
+<!-- 企业图片列，鼠标挪到小图上出现大图的效果代码  //-->
+<script type="text/javascript" src="js/pic.js"></script>
+<script language="javascript" type="text/javascript" src="js/checkbox_tab.js"></script>
+<!--会员等级查看浮框-->
+<script type="text/javascript">
+var mask=(function(){
+	//取得元素位置
+	function getPosition(elem){
+	  var x = 0;
+	  var y = 0;
+	  while (elem != null){
+		x += elem.offsetLeft;
+		y += elem.offsetTop;
+		elem = elem.offsetParent;
+	  }
+	  return {"x":x,"y":y};
+	}
+	
+	//按class取得元素
+	function getElementsByClass(name){
+		var r = [];
+		var re = new RegExp("(^|\\s)"+name+"(\\s|$)");
+		var e = document.getElementsByTagName("*");
+		for ( var j = 0,len=e.length;j < len; j++ )
+			if (re.test(e[j].className)) r.push(e[j]);
+		return r;
+	}
+	
+	//阻止事件传递
+	function stopProp(ev) {
+		var e=ev?ev:window.event;
+		if (window.event) {
+			e.cancelBubble=true;
+		}else {
+			e.stopPropagation();
+		}
+	} 
+	
+	function resizeMask(clickobj,obj){
+		var pos=getPosition(clickobj);
+		
+		//弹出框位置
+		obj.style.left = pos["x"]-obj.offsetWidth/2+clickobj.offsetWidth/2+"px";
+		obj.style.top=pos["y"]+clickobj.offsetHeight +"px";
+		obj.style.zIndex = "1001";
+	}
+	
+	return{
+		init:function(clickid){
+			var wins=getElementsByClass(clickid);
+			var popupobj;
+			//绑定打开事件
+			for(var i=0;i<wins.length;i++){
+				wins[i].onclick=function(e){
+					popupobj=this.nextSibling;
+					while(popupobj && popupobj.nodeType !=1){
+						popupobj=popupobj.nextSibling;	
+					}
+					//阻止事件传递防止点击浮层关闭
+					popupobj.onclick=function(e){stopProp(e);}
+					mask.open(this,popupobj);stopProp(e);return false;
+				}	
+			}
+			//点击空白处关闭
+			document.documentElement.onclick=function(){mask.close(popupobj);}
+		},
+		open:function(clickobj,obj){
+			   obj.style.display="block";
+			   resizeMask(clickobj,obj);
+		},
+		close:function(obj){
+				if(obj){
+				obj.style.display="none";
+				}
+		}
+	}
+})()
+
+mask.init("alert_win");
+
+function saveChange(t) {
+var _targetObj = document.getElementById("jiaofei");
+	if(t.value != 99){
+		_targetObj.disabled=false;
+	}else{
+		_targetObj.options[0].selected=true; 
+		_targetObj.disabled=true;
+	}
+}
+</script>
+<script type="text/javascript" src="js/iframe_height.js"></script>
+</script>  
+	<div class="Con_record" id="pop" title="联系记录" style="display:none;">
+		<h5>添加联系记录</h5>
+		<p class="save">
+			<textarea name="this_value" cols="85" rows="5"></textarea>
+			<input name="Submit2" type="button" class="button3d" value="保 存">
+		</p>
+		<h5>历史记录查看</h5>
+		<ul>
+		</ul>
+	</div>
+</html>
+<script type="text/javascript">
+    var products = new Array();
+    var memberGrades = new Array();
+#foreach($product in $products)
+	products[$velocityCount] = new Array("$!{product.channelId}","$!{product.id}","$!{product.productName}");
+#end
+#foreach($memberGrade in $memberGrades)
+	memberGrades[$velocityCount] = new Array("$!{memberGrade.channelId}","$!{memberGrade.id}","$!{memberGrade.gradeName}");
+#end
+    function chgProduct(ID, selectValue){
+    	var pro_obj = document.getElementById("loanproduce");
+        pro_obj.options.length = 0;
+        pro_obj.options[0]=new Option("贷款产品","99");
+        for(i = 0; i < products.length; i++){
+            if(null != products[i] && products[i][0] == ID){
+                pro_obj.options[pro_obj.length]=new Option(products[i][2],products[i][1]);
+            }
+        }
+        for (var i = 0; i < pro_obj.options.length; i++) {           
+            if(pro_obj.options[i].value == selectValue) {           
+                pro_obj.options[i].selected = true;         
+                break;           
+            }           
+        }   
+    }
+    function chgMemberGrade(ID , selectValue){
+    	var ugra_obj = document.getElementById("usergrade");
+        ugra_obj.options.length = 0;
+        ugra_obj.options[0]=new Option("会员等级","99");
+        for(i = 0; i < memberGrades.length; i++){
+            if(null != memberGrades[i] && memberGrades[i][0] == ID){
+                ugra_obj.options[ugra_obj.length]=new Option(memberGrades[i][2],memberGrades[i][1]);
+            }
+        }
+        for (var i = 0; i < ugra_obj.options.length; i++) {           
+            if(ugra_obj.options[i].value == selectValue) {           
+                ugra_obj.options[i].selected = true;          
+                break;           
+            }           
+        }     
+    }
+	var loanproduce =  '$!{loanproduce}' == '' ?  99 : '$!{loanproduce}';
+	var loanway =  '$!{loanway}' == '' ?  99 : '$!{loanway}';
+	var usergrade =  '$!{usergrade}' == '' ?  99 : '$!{usergrade}';
+    function init(){
+    	if(99 != loanway){
+    		chgProduct(loanway, loanproduce);
+    		chgMemberGrade(loanway, usergrade);
+    	}
+    }
+    init();
+</script>
