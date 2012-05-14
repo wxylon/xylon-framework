@@ -28,7 +28,7 @@
 		<property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}" />
 	</bean>
 
-	<!------------- jdbc连接池-2------------------->
+	<!-- jdbc连接池-2-->
 	<bean id="c3p0_dataSource_2" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="${jdbc.driverClass}" />
 		<property name="jdbcUrl" value="${mysql.url_2}" />
