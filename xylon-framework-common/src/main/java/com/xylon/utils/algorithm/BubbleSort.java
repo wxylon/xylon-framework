@@ -8,20 +8,34 @@ import com.xylon.BaseLog;
  * @author wangxiong
  */
 public class BubbleSort extends BaseLog{
+//	public static void sort(Object[] args){
+//		Object temp;
+//		int j = 1;
+//		for(int i = 0; i < args.length; i++){
+//			j = 1;
+//			while(j < args.length){
+//				if(args[j-1].hashCode() > args[j].hashCode()){
+//					temp = args[j-1];
+//					args[j-1] = args[j];
+//					args[j] = temp;
+//				}
+//				debug("第  "+i+"  趟排序中", args);
+//				j++;
+//			}
+//		}
+//	}
+	
 	public static void sort(Object[] args){
-		Object temp;
-		int j = 1;
-		for(int i = 0; i < args.length; i++){
-			j = 1;
-			while(j < args.length){
-				if(args[j-1].hashCode() > args[j].hashCode()){
-					temp = args[j-1];
-					args[j-1] = args[j];
-					args[j] = temp;
-				}
-				debug("第  "+i+"  趟排序中", args);
-				j++;
+	Object temp;
+	for(int i = 0; i < args.length; i++){
+		for(int j = args.length - 2; j >= i; j--){
+			if(args[j].hashCode() > args[j+1].hashCode()){
+				temp = args[j+1];
+				args[j+1] = args[j];
+				args[j] = temp;
 			}
+			debug("第  "+i+"  趟排序中", args);
 		}
 	}
+}
 }
