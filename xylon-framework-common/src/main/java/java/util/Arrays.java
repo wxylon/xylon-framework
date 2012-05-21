@@ -1,6 +1,12 @@
 package java.util;
 
 import java.lang.reflect.*;
+import java.util.AbstractList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.RandomAccess;
+import java.util.Set;
 
 public class Arrays {
     private Arrays() {
@@ -1088,25 +1094,30 @@ public class Arrays {
     private static final int INSERTIONSORT_THRESHOLD = 7;
 
     /**
+     * 
+     * @param src  	待排序的子数组
+     * @param dest	源数组
+     * @param low	起始位置
+     * @param high	结束位置
+     * @param off	
+     */
+    
+    /**
      * Src is the source array that starts at index 0
      * Dest is the (possibly larger) array destination with a possible offset
      * low is the index in dest to start sorting
      * high is the end index in dest to end sorting
      * off is the offset to generate corresponding low, high in src
      */
-    private static void mergeSort(Object[] src,
-				  Object[] dest,
-				  int low,
-				  int high,
-				  int off) {
-	int length = high - low;
+    private static void mergeSort(Object[] src,  Object[] dest, int low, int high, int off) {
+	
+    	int length = high - low;
 
 	// Insertion sort on smallest arrays
         if (length < INSERTIONSORT_THRESHOLD) {
             for (int i=low; i<high; i++)
-                for (int j=i; j>low &&
-			 ((Comparable) dest[j-1]).compareTo(dest[j])>0; j--)
-                    swap(dest, j, j-1);
+                for (int j=i; j>low &&((Comparable) dest[j-1]).compareTo(dest[j])>0; j--)
+                	swap(dest, j, j-1);
             return;
         }
 
@@ -2986,13 +2997,9 @@ public class Arrays {
      */
     public static <T,U> T[] copyOfRange(U[] original, int from, int to, Class<? extends T[]> newType) {
         int newLength = to - from;
-        if (newLength < 0)
-            throw new IllegalArgumentException(from + " > " + to);
-        T[] copy = ((Object)newType == (Object)Object[].class)
-            ? (T[]) new Object[newLength]
-            : (T[]) Array.newInstance(newType.getComponentType(), newLength);
-        System.arraycopy(original, from, copy, 0,
-                         Math.min(original.length - from, newLength));
+        if (newLength < 0) throw new IllegalArgumentException(from + " > " + to);
+        T[] copy = ((Object)newType == (Object)Object[].class) ? (T[]) new Object[newLength] : (T[]) Array.newInstance(newType.getComponentType(), newLength);
+        System.arraycopy(original, from, copy, 0, Math.min(original.length - from, newLength));
         return copy;
     }
 
@@ -4080,7 +4087,7 @@ public class Arrays {
         if (a.length != 0 && bufLen <= 0)
             bufLen = Integer.MAX_VALUE;
         StringBuilder buf = new StringBuilder(bufLen);
-        deepToString(a, buf, new HashSet());
+        deepToString(a, buf, new HashSet<Object[]>());
         return buf.toString();
     }
 
