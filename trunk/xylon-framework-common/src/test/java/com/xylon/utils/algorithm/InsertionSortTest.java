@@ -6,6 +6,8 @@ import java.util.Random;
 
 import org.junit.Test;
 
+import com.xylon.utils.Me;
+
 public class InsertionSortTest {
 	public static final Random RANDOM = new Random();
 	
