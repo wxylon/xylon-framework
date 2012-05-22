@@ -19,4 +19,18 @@ public class BaseLog {
 		builder.append("]");
 		log.debug(builder.toString());
 	}
+	
+	protected static void debug(String text, int[]  args){
+		StringBuilder builder = new StringBuilder();
+		builder.append(text).append(" : ");
+		builder.append("[");
+		for(int i = 0; i < args.length; i++){
+			if(i != 0){
+				builder.append(", ");
+			}
+			builder.append(args[i]);
+		}
+		builder.append("]");
+		log.debug(builder.toString());
+	}
 }
