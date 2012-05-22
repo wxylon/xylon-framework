@@ -27,7 +27,10 @@ public class Binarysearch extends BaseLog{
 	    //2、循环内当array[middle]>value 的时候，right = mid  
 	  
 	    while (left <= right)  {            //循环条件，适时而变
-	        middle = left + ((right - left) >> 1);  //防止溢出，移位也更高效。同时，每次循环都需要更新。  
+//	        middle = left + ((right - left) >> 1);  //防止溢出，移位也更高效。同时，每次循环都需要更新。  
+	    	//比上面少了已给运算，更高效
+	    	//  >>> 无符号移位
+	    	middle = (left + right) >>> 1;  
 	        if(log.isDebugEnabled()){
 	        	log.debug("left:" + left +"; right:" + right + "; middle:" + middle + "; ");
 	        }
