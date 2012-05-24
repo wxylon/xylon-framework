@@ -1,24 +1,22 @@
 package com.xylon.utils.algorithm;
 
-import com.xylon.utils.Me;
-
 /**
  * 插入排序算法
  * @author wangxiong
  */
 public class InsertionSort {
-	public static void sort(Me[] mes){
-		int n = mes.length;
+	public static void sort(Object[] objects){
+		int n = objects.length;
 		int j;
-		Me temp;
+		Object temp;
 		for(int i = 1; i < n; i++){
-			temp = mes[i];
+			temp = objects[i];
 			j = i - 1;
-			while(j >= 0 && mes[j].hashCode() > temp.hashCode()){
-				mes[j+1] = mes[j];
+			while(j >= 0 && objects[j].hashCode() > temp.hashCode()){
+				objects[j+1] = objects[j];
 				j--;
 			}
-			mes[j+1] = temp;
+			objects[j+1] = temp;
 		}
 	}
 }
