@@ -2250,43 +2250,50 @@ public class TreeMap<K, V> extends AbstractMap<K, V> implements NavigableMap<K, 
 		modCount++;
 		size--;
 
-		// If strictly internal, copy successor's element to p and then make p
-		// point to successor.
+		// 如果被删除节点的左子树、右子树都不为空
 		if (p.left != null && p.right != null) {
+			// 用 p 节点的中序后继节点代替 p 节点
 			Entry<K, V> s = successor(p);
 			p.key = s.key;
 			p.value = s.value;
 			p = s;
 		} // p has 2 children
 
-		// Start fixup at replacement node, if it exists.
+		// 如果 p 节点的左节点存在，replacement 代表左节点；否则代表右节点。
 		Entry<K, V> replacement = (p.left != null ? p.left : p.right);
 
 		if (replacement != null) {
 			// Link replacement to parent
 			replacement.parent = p.parent;
+			// 如果 p 没有父节点，则 replacemment 变成父节点
 			if (p.parent == null)
 				root = replacement;
+			// 如果 p 节点是其父节点的左子节点
 			else if (p == p.parent.left)
 				p.parent.left = replacement;
+			// 如果 p 节点是其父节点的右子节点
 			else
 				p.parent.right = replacement;
 
 			// Null out links so they are OK to use by fixAfterDeletion.
 			p.left = p.right = p.parent = null;
 
-			// Fix replacement
+			// 修复红黑
 			if (p.color == BLACK)
 				fixAfterDeletion(replacement);
+		// 如果 p 节点没有父节点
 		} else if (p.parent == null) { // return if we are the only node.
 			root = null;
 		} else { // No children. Use self as phantom replacement and unlink.
 			if (p.color == BLACK)
+				// 修复红黑树
 				fixAfterDeletion(p);
 
 			if (p.parent != null) {
+				// 如果 p 是其父节点的左子节点
 				if (p == p.parent.left)
 					p.parent.left = null;
+				// 如果 p 是其父节点的右子节点
 				else if (p == p.parent.right)
 					p.parent.right = null;
 				p.parent = null;
