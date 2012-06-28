@@ -20,19 +20,19 @@ public class CharactorTest {
 	 */
 	@Test
 	public void testGBK(){
-		String a = "a";
-		String str = "我";
+		final String A = "a";
+		final String WO = "我";
 		try {
-			Assert.assertEquals(a.getBytes("gbk").length, 1);
-			Assert.assertEquals(a.getBytes("utf-8").length, 1);
+			Assert.assertEquals(A.getBytes("gbk").length, 1);
+			Assert.assertEquals(A.getBytes("utf-8").length, 1);
 			
-			Assert.assertEquals(str.getBytes("gbk").length, 2);
-			Assert.assertEquals(str.getBytes("utf-8").length, 3);
+			Assert.assertEquals(WO.getBytes("gbk").length, 2);
+			Assert.assertEquals(WO.getBytes("utf-8").length, 3);
 			
 			//取得Unicode编码
-			Assert.assertEquals((int)(str.charAt(0)), 25105);
+			Assert.assertEquals((int)(WO.charAt(0)), 25105);
 			//code转char
-			Assert.assertEquals(new String(Character.toChars(25105)).charAt(0), str.charAt(0));
+			Assert.assertEquals(new String(Character.toChars(25105)).charAt(0), WO.charAt(0));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
