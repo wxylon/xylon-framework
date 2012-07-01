@@ -9,7 +9,7 @@ package com.xylon.utils.designer.factory.demo1;
  * @date 2012-7-1
  */
 //圆形子类
-class Circle extends Shape {
+public class Circle extends Shape {
 	public void draw() {
 		System.out.println("It will draw a circle.");
 	}
