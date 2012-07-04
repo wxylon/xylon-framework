@@ -1,13 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-		<title>慧聪网-信用贷款</title>
-		<link href="http://image.hc360.com/daikuan/1117/index.css" type="text/css" rel="stylesheet" />
-		<base target="_blank" />
-	</head>
-
-	<body>
-		test
-	</body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<title>慧聪网-信用贷款</title>
+	<link href="http://image.hc360.com/daikuan/1117/index.css" type="text/css" rel="stylesheet" />
+	<base target="_blank" />
+	<script type="text/javascript" src="../script/jquery/jquery-1.5.2.js"></script>
+	<script type="text/javascript" src="../script/jquery/jquery.blockUI.js"></script>
+</head>
+<body>
+	<input type="button" onclick="showBlock();" value="test"/>
+</body>
+<script language="JavaScript">  
+function showBlock(){  
+       jQuery.blockUI({ 
+    	   message: "处理中，请稍候...",
+    	   css: {color:'#fff',border:'3px solid #aaa',backgroundColor:'#CC3300'},
+    	   overlayCSS: { opacity:'0.0' },
+    	   forceIframe:true
+    	   });  
+       setTimeout('hideBlock()',20000);//2000毫秒后调用hideBlock()  
+}  
+function hideBlock(){  
+  jQuery.unblockUI();  
+}  
+</script> 
 </html>
