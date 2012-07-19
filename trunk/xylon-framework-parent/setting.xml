@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"
+	xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<profiles>
+		<profile>
+            <id>jdRepository</id>
+			<repositories>
+				<repository>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<id>central</id>
+					<name>libs-releases</name>
+					<url>http://artifactory.360buy-develop.com/libs-releases</url>
+				</repository>
+				<repository>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<id>snapshots</id>
+					<name>libs-snapshots</name>
+					<url>http://artifactory.360buy-develop.com/libs-snapshots</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<id>central</id>
+					<name>plugins-releases</name>
+					<url>http://artifactory.360buy-develop.com/plugins-releases</url>
+				</pluginRepository>
+				<pluginRepository>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<id>snapshots</id>
+					<name>plugins-snapshots</name>
+					<url>http://artifactory.360buy-develop.com/plugins-snapshots</url>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+
+	<activeProfiles>
+		<activeProfile>jdRepository</activeProfile>
+	</activeProfiles>
+</settings>
