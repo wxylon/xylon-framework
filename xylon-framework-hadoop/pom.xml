@@ -1,11 +1,8 @@
-<?xml version="1.0"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>xylon-framework-parent</artifactId>
 		<groupId>com.xylon.framework</groupId>
+		<artifactId>xylon-framework-parent</artifactId>
 		<version>1.0</version>
 		<relativePath>../xylon-framework-parent</relativePath>
 	</parent>
@@ -13,21 +10,164 @@
 	<groupId>com.xylon.framework</groupId>
 	<artifactId>xylon-framework-hadoop</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
-	
-	<name>xylon-framework-hadoop</name>
-	<url>http://maven.apache.org</url>
 	
 	<properties>
+		<ibatis.version>2.3.4.726</ibatis.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+		
 	<dependencies>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqlserver-jdbc</artifactId>
+			<version>3.0</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
-			<scope>test</scope>
+			<version>4.5</version>
+			<scope></scope>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudera.hadoop</groupId>
+			<artifactId>hadoop-mrunit</artifactId>
+			<version>0.20.2-320</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-core</artifactId>
+			<version>0.20.2-cdh3u3</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.hadoop</groupId> <artifactId>hadoop-common</artifactId> 
+			<version>0.22.0</version> </dependency> -->
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-mapred</artifactId>
+			<version>0.22.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.hadoop</groupId>
+					<artifactId>hadoop-common</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.hadoop</groupId> <artifactId>hadoop-hdfs</artifactId> 
+			<version>0.22.0</version> </dependency> <dependency> <groupId>org.apache.hadoop</groupId> 
+			<artifactId>hadoop-test</artifactId> <version>0.20.2-cdh3u3</version> </dependency> -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<artifactId>spring-data-mongodb</artifactId>
+			<groupId>org.springframework.data</groupId>
+			<version>1.0.1.RELEASE</version>
+			<exclusions>
+			<exclusion>
+			 <groupId>mongo-java-driver</groupId>
+  			<artifactId>mongo-java-driver</artifactId>
+			</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+		 <groupId>mongo-java-driver</groupId>
+  		<artifactId>mongo-java-driver</artifactId>
+  		<version>2.7.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.sqoop</groupId>
+			<artifactId>sqoop</artifactId>
+			<version>1.4.0-incubating</version>
+		</dependency>
+
+		<!-- DB drivers -->
+		<dependency>
+			<groupId>net.sourceforge.jtds</groupId>
+			<artifactId>jtds</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+		<!-- DB Connection Pool -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+			<version>2.3.4.726</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqlserver-jdbc</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yahoo.oozie</groupId>
+			<artifactId>oozie-client</artifactId>
+			<version>2.3.2-cdh3u3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.6.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudera.hadoop</groupId>
+			<artifactId>hadoop-mrunit</artifactId>
+			<version>0.20.2-320</version>
 		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>cloudera</id>
+			<url>https://repository.cloudera.com/artifactory/libs-release/</url>
+		</repository>
+	</repositories>
+	
+	<profiles>
+		<profile>
+			<id>development</id>
+			<properties>
+				<jdbga.bga.sqlserver.jdbc.driver>dbcp</jdbga.bga.sqlserver.jdbc.driver>
+			</properties>
+		</profile>
+	</profiles>
+ 
 </project>
