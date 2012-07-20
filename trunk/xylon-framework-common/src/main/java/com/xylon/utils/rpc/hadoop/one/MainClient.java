@@ -1,6 +1,6 @@
-package com.xylon.utils.rpc.hadoop;
+package com.xylon.utils.rpc.hadoop.one;
 
-import com.xylon.utils.rpc.hadoop.op.Echo;
+import com.xylon.utils.rpc.hadoop.one.op.Echo;
 
 
 public class MainClient {

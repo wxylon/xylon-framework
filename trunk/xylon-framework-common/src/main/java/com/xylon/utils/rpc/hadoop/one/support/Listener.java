@@ -1,4 +1,4 @@
-package com.xylon.utils.rpc.hadoop.support;
+package com.xylon.utils.rpc.hadoop.one.support;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.channels.ServerSocketChannel;
 
-import com.xylon.utils.rpc.hadoop.protocal.Invocation;
+import com.xylon.utils.rpc.hadoop.one.protocal.Invocation;
 
 
 public class Listener extends Thread {

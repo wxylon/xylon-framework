@@ -1,4 +1,4 @@
-package com.xylon.utils.rpc.hadoop.protocal;
+package com.xylon.utils.rpc.hadoop.one.protocal;
 
 import java.io.Serializable;
 import java.util.Arrays;

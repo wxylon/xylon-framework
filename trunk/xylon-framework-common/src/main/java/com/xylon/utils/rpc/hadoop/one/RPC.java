@@ -1,4 +1,4 @@
-package com.xylon.utils.rpc.hadoop;
+package com.xylon.utils.rpc.hadoop.one;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -6,10 +6,10 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.xylon.utils.rpc.hadoop.protocal.Invocation;
-import com.xylon.utils.rpc.hadoop.support.Client;
-import com.xylon.utils.rpc.hadoop.support.Listener;
-import com.xylon.utils.rpc.hadoop.support.Server;
+import com.xylon.utils.rpc.hadoop.one.protocal.Invocation;
+import com.xylon.utils.rpc.hadoop.one.support.Client;
+import com.xylon.utils.rpc.hadoop.one.support.Listener;
+import com.xylon.utils.rpc.hadoop.one.support.Server;
 
 
 public class RPC {
@@ -22,7 +22,7 @@ public class RPC {
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 				Invocation invo = new Invocation();
 				invo.setInterfaces(clazz);
-				invo.setMethod(new com.xylon.utils.rpc.hadoop.protocal.Method(method.getName(),method.getParameterTypes()));
+				invo.setMethod(new com.xylon.utils.rpc.hadoop.one.protocal.Method(method.getName(),method.getParameterTypes()));
 				invo.setParams(args);
 				client.invoke(invo);
 				return invo.getResult();
