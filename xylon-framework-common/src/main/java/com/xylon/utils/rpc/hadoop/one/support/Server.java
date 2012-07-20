@@ -1,6 +1,6 @@
-package com.xylon.utils.rpc.hadoop.support;
+package com.xylon.utils.rpc.hadoop.one.support;
 
-import com.xylon.utils.rpc.hadoop.protocal.Invocation;
+import com.xylon.utils.rpc.hadoop.one.protocal.Invocation;
 
 
 public interface Server {
