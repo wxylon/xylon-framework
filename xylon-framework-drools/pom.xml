@@ -31,6 +31,12 @@
 			<version>${drools.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>mvel2</artifactId>
+					<groupId>org.mvel</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
@@ -38,6 +44,16 @@
 			<version>${drools.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>mvel2</artifactId>
+					<groupId>org.mvel</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>ecj</artifactId>
+					<groupId>org.eclipse.jdt.core.compiler</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
@@ -45,6 +61,12 @@
 			<version>${drools.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>jsr94</artifactId>
+					<groupId>jsr94</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
@@ -52,6 +74,12 @@
 			<version>${drools.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>jxl</artifactId>
+					<groupId>net.sourceforge.jexcelapi</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
@@ -77,46 +105,5 @@
         <directory>src/main/rules</directory>
       </resource>
     </resources>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-eclipse-plugin</artifactId>
-        <configuration>
-          <additionalBuildcommands>
-            <buildcommand>org.drools.eclipse.droolsbuilder</buildcommand>
-          </additionalBuildcommands>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>${project.mainClass}</mainClass>
-              <addClasspath>true</addClasspath>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.0.2</version>
-        <configuration>
-          <executable>java</executable>
-          <!-- only waltz12 is configured at the moment -->
-          <!-- TODO waltz50, manners64 and manners128 -->
-          <arguments>
-            <argument>-Xms1024M</argument>
-            <argument>-Xmx1024M</argument>
-            <argument>-cp</argument>
-            <classpath/>
-            <argument>${project.mainClass}</argument>
-            <argument>waltz12.dat</argument>
-          </arguments>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
 </project>
