@@ -6,8 +6,10 @@ import java.io.Reader;
 import org.drools.RuleBase;
 import org.drools.RuleBaseFactory;
 import org.drools.WorkingMemory;
+import org.drools.builder.ResourceType;
 import org.drools.compiler.PackageBuilder;
 import org.drools.event.DebugWorkingMemoryEventListener;
+import org.drools.io.Resource;
 import org.drools.io.impl.ClassPathResource;
 import org.drools.rule.Package;
 
@@ -21,7 +23,10 @@ public class RulesEngine {
 		super();
 		try {
 			// Read in the rules source file
-			Reader source = new InputStreamReader(new ClassPathResource("/" + rulesFile).getInputStream());
+			ClassPathResource resource = new ClassPathResource("rules/" + rulesFile);
+			resource.setResourceType(ResourceType.DRL);
+			
+			Reader source = new InputStreamReader(resource.getInputStream());
 
 			// Use package builder to build up a rule package
 			PackageBuilder builder = new PackageBuilder();
