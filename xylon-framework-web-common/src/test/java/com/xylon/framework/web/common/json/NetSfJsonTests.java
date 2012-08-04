@@ -5,6 +5,7 @@
 package com.xylon.framework.web.common.json;
 
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,12 +36,14 @@ public class NetSfJsonTests{
 			content.setId("ID-" + i);
 			content.setPath("路径-" + i);
 			content.setTitle("标题-" + i);
+			content.setPrice(BigDecimal.valueOf(234.1231321));
 			List<Picture> pictures = new ArrayList<Picture>();
 			for(int k = 0; k <= i; k++){
 				Picture picture = new Picture();
 				picture.setImgPath("path" + k);
 				picture.setDescription("注释 " + k);
 				pictures.add(picture);
+				picture.setPrice(BigDecimal.valueOf(234.1231321));
 			}
 			content.setPictures(pictures);
 			contents.add(content);
@@ -68,7 +71,7 @@ public class NetSfJsonTests{
 	
 	@Test
 	public void testJson2Bean() throws Exception{
-		String s = "[{\"author\":\"作者-0\",\"id\":\"ID-0\",\"path\":\"路径-0\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\"}],\"title\":\"标题-0\"},{\"author\":\"作者-1\",\"id\":\"ID-1\",\"path\":\"路径-1\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\"},{\"description\":\"注释 1\",\"imgPath\":\"path1\"}],\"title\":\"标题-1\"},{\"author\":\"作者-2\",\"id\":\"ID-2\",\"path\":\"路径-2\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\"},{\"description\":\"注释 1\",\"imgPath\":\"path1\"},{\"description\":\"注释 2\",\"imgPath\":\"path2\"}],\"title\":\"标题-2\"},{\"author\":\"作者-3\",\"id\":\"ID-3\",\"path\":\"路径-3\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\"},{\"description\":\"注释 1\",\"imgPath\":\"path1\"},{\"description\":\"注释 2\",\"imgPath\":\"path2\"},{\"description\":\"注释 3\",\"imgPath\":\"path3\"}],\"title\":\"标题-3\"},{\"author\":\"作者-4\",\"id\":\"ID-4\",\"path\":\"路径-4\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\"},{\"description\":\"注释 1\",\"imgPath\":\"path1\"},{\"description\":\"注释 2\",\"imgPath\":\"path2\"},{\"description\":\"注释 3\",\"imgPath\":\"path3\"},{\"description\":\"注释 4\",\"imgPath\":\"path4\"}],\"title\":\"标题-4\"}]";
+		String s = "[{\"author\":\"作者-0\",\"id\":\"ID-0\",\"path\":\"路径-0\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"标题-0\"},{\"author\":\"作者-1\",\"id\":\"ID-1\",\"path\":\"路径-1\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"注释 1\",\"imgPath\":\"path1\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"标题-1\"},{\"author\":\"作者-2\",\"id\":\"ID-2\",\"path\":\"路径-2\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"注释 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"注释 2\",\"imgPath\":\"path2\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"标题-2\"},{\"author\":\"作者-3\",\"id\":\"ID-3\",\"path\":\"路径-3\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"注释 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"注释 2\",\"imgPath\":\"path2\",\"price\":234.1231321},{\"description\":\"注释 3\",\"imgPath\":\"path3\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"标题-3\"},{\"author\":\"作者-4\",\"id\":\"ID-4\",\"path\":\"路径-4\",\"pictures\":[{\"description\":\"注释 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"注释 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"注释 2\",\"imgPath\":\"path2\",\"price\":234.1231321},{\"description\":\"注释 3\",\"imgPath\":\"path3\",\"price\":234.1231321},{\"description\":\"注释 4\",\"imgPath\":\"path4\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"标题-4\"}]";
 		JSONArray ja = JSONArray.fromObject(s);
 		
 		Map<String, Class<Picture>> classMap = new HashMap<String, Class<Picture>>();
@@ -77,8 +80,10 @@ public class NetSfJsonTests{
 		for(int i = 0 ; i < results.size();  i++){
 			Content content = (Content)results.get(i);
 			System.out.print(content.getAuthor()+"\t\t");
+			System.out.print(content.getPrice()+"\t\t");
 			for(Picture picture : content.getPictures()){
 				System.out.print(picture.getImgPath()+"\t\t");
+				System.out.print(picture.getPrice()+"\t\t");
 			}
 			System.out.println();
 		}
