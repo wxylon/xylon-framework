@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+					http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+					http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+					http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	default-lazy-init="false" default-autowire="byName">
+	
+	<description>Spring</description>
+	
+	<bean name="autoCgSort" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="库存期初" value="0"></entry>
+				<entry key="出库销售" value="1"></entry>
+				<entry key="出库放货" value="2"></entry>
+				<entry key="出库调货" value="3"></entry>
+				<entry key="出库退货" value="4"></entry>
+				<entry key="出库移动" value="5"></entry>
+				<entry key="出库赠品报废" value="6"></entry>
+				<entry key="出库三方损" value="7"></entry>
+				<entry key="出库物流损" value="8"></entry>
+				<entry key="出库其它返修品" value="9"></entry>
+				<entry key="出库其它盘盈盘亏" value="10"></entry>
+				<entry key="出库其他" value="11"></entry>
+				<entry key="入库放货" value="12"></entry>
+				<entry key="入库调货" value="13"></entry>
+				<entry key="入库退货" value="14"></entry>
+				<entry key="入库移动" value="15"></entry>
+				<entry key="入库三方损" value="16"></entry>
+				<entry key="入库物流损" value="17"></entry>
+				<entry key="入库其它返修品" value="18"></entry>
+				<entry key="入库其它盘盈盘亏" value="19"></entry>
+				<entry key="库存期末" value="20"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>
