@@ -136,7 +136,7 @@
 <template autoinsert="false" context="newtype_context"
 		deleted="false" description="新建类文件自动添加" enabled="true"
 		id="org.eclipse.jdt.ui.text.codetemplates.newtype" name="newtype">/**
-* Copyright(c) 2002-${year}, 360buy.com  All Rights Reserved
+* Copyright(c) 2004-${year}, 360buy.com  All Rights Reserved
 */
 
 ${filecomment}
