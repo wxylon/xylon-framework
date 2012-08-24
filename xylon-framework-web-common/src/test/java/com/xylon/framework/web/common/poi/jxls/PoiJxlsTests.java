@@ -16,8 +16,8 @@ import com.xylon.framework.poi.jxls.JxlsUtils;
  * @date 2012-8-24
  */
 public class PoiJxlsTests {
-	private String source = "D:\\maven-xylon\\xylon-framework-2\\xylon-framework-web-common\\src\\test\\java\\com\\xylon\\framework\\web\\common\\json\\NetSfJsonTests.xlsx";
-	private String target = "D:\\maven-xylon\\xylon-framework-2\\xylon-framework-web-common\\src\\test\\java\\com\\xylon\\framework\\web\\common\\json\\NetSfJsonTestsResult.xlsx";
+	private String source = "D:\\maven-xylon\\xylon-framework-2\\xylon-framework-web-common\\src\\test\\java\\com\\xylon\\framework\\web\\common\\poi\\jxls\\PoiJxlsTests.xlsx";
+	private String target = "D:\\maven-xylon\\xylon-framework-2\\xylon-framework-web-common\\src\\test\\java\\com\\xylon\\framework\\web\\common\\poi\\jxls\\PoiJxlsTestsResult.xlsx";
 	
 	@Test
 	public void testJxls(){
