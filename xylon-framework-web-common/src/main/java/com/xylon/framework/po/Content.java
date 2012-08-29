@@ -5,6 +5,7 @@
 package com.xylon.framework.po;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class Content implements Serializable {
 	private String title;
 	private List<Picture> pictures;
 	private String path;
+	private BigDecimal price;
 
 	public String getAuthor() {
 		return author;
@@ -58,5 +60,13 @@ public class Content implements Serializable {
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 }

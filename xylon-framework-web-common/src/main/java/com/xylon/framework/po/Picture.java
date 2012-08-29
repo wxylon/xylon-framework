@@ -5,6 +5,7 @@
 package com.xylon.framework.po;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * @author wxylon@gmail.com
@@ -15,6 +16,7 @@ public class Picture implements Serializable {
 	private static final long serialVersionUID = -3318102781194896749L;
 	private String description;
 	private String imgPath;
+	private BigDecimal price;
 
 	public String getDescription() {
 		return description;
@@ -30,5 +32,13 @@ public class Picture implements Serializable {
 
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 }
