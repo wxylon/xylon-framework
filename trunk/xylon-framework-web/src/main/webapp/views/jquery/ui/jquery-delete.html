@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+<title>自动凭证系统</title>
+<style type="text/css">
+  body   {   SCROLLBAR-FACE-COLOR:   #BFD9F9;   SCROLLBAR-HIGHLIGHT-COLOR:   #BFD9F9;   SCROLLBAR-SHADOW-COLOR:   #BFD9F9;   SCROLLBAR-3DLIGHT-COLOR:   #000000;   SCROLLBAR-ARROW-COLOR:   #000000;   SCROLLBAR-TRACK-COLOR:   #ffffff;SCROLLBAR-DARKSHADOW-COLOR:   #000000}     
+</style>
+<script type="text/javascript" src="../../../script/jquery/jquery-1.5.2.min.js"></script>
+</head>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("body tbody").append("<tbody id='dynamicDiv'><tr><td>t3</td></tr></tbody>");
+		var count = 0;
+		$("#clear-button").click(function(){
+			//元素将会被从页面上删除
+			//$("body tbody").remove("#dynamicDiv");
+			//元素将会被从页面上删除
+			$("body tbody #dynamicDiv").remove();
+			//删除子节点
+			//$("body tbody #dynamicDiv").empty();
+			//$("body tbody").append("<tbody id='dynamicDiv'><tr><td>t4</td></tr><tr><td>t4</td></tr></tbody>");
+			$("body tbody").append("<tbody id='dynamicDiv'><tr><td>t"+(count)+"</td></tr><tr><td>t"+(count)+"</td></tr></tbody>");
+			count++;
+		});
+	});
+</script>
+<body>
+<table>
+	<tbody>
+		<tr><td> td	</td></tr>
+		<tr><td> td	</td></tr>
+		<tr><td> td	</td></tr>
+		<tr><td> td	</td></tr>
+	</tbody>
+</table>
+<input type="button" id="clear-button">
+</body>
+</html>
