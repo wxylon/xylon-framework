@@ -7,7 +7,8 @@ package com.xylon.utils.string;
 public class StringTest {
 	
 	public static void main(String[] args) {
-		test();
+//		test();
+		testSubString();
 	}
 	
 	
@@ -23,5 +24,13 @@ public class StringTest {
 //		false
 //		false
 //		false
+	}
+	
+	public static void testSubString(){
+		String k = "dfdfdfdfdfd";
+		String z = "dfdfdfdfdfd9";
+		String t = k.substring(0, 2);
+		System.out.println(k);
+		System.out.println(t);
 	}
 }
