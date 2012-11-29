@@ -1,0 +1,7 @@
+http://crane-ding.iteye.com/blog/968862
+## 查看PID
+$ jps  
+  3076 Jps  
+  448 DeadLock  
+## 导出堆栈信息
+$ jstack -l 448 > deadlock.jstack  
