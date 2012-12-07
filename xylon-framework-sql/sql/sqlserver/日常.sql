@@ -34,4 +34,13 @@ WHERE ROWNUMBER BETWEEN 0 AND 10000
 --字符串查找：待查找的字符串， 被查找的字符串， 起始位置（从1开始）
 select Charindex('a','abcdefg',1) 
 
+--转换为小写
+select LOWER('aaAAds');
+
+--转换为大写
+select UPPER('aaAAds');
+
+--判断是否为数据  ISNUMERIC('fsfds') = 0 为非数据， =1为数字
+select ISNUMERIC('fsfds')
+
 
