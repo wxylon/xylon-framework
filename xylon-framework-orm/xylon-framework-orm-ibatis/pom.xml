@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>xylon-framework-orm</artifactId>
+		<groupId>com.xylon.framework</groupId>
+		<version>1.0</version>
+	</parent>
+	
+	<groupId>com.xylon.framework</groupId>
+	<artifactId>xylon-framework-orm-ibatis</artifactId>
+	<version>1.0</version>
+	
+	<properties>
+        <ibatis-version>2.3.4.726</ibatis-version>
+        <junit-version>4.8.2</junit-version>
+        <log4j-version>1.2.14</log4j-version>
+   	</properties>
+	
+	<dependencies>
+		<dependency>
+            <groupId>org.apache.ibatis</groupId>
+            <artifactId>ibatis-sqlmap</artifactId>
+            <version>${ibatis-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j-version}</version>
+        </dependency>
+	    <dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+	    </dependency>
+	</dependencies>
+</project>
