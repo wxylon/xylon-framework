@@ -77,7 +77,9 @@ package java.util;
  * @see Collection
  * @since 1.2
  */
-//@see document: http://www.ibm.com/developerworks/cn/java/j-lo-tree/index.html
+//@see document: 
+//http://blog.csdn.net/zhongjiekangping/article/details/5624503
+//http://www.ibm.com/developerworks/cn/java/j-lo-tree/index.html
 public class TreeMap<K, V> extends AbstractMap<K, V> implements NavigableMap<K, V>, Cloneable, java.io.Serializable {
 	/**
 	 * The comparator used to maintain order in this tree map, or null if it
@@ -2146,6 +2148,7 @@ public class TreeMap<K, V> extends AbstractMap<K, V> implements NavigableMap<K, 
 		return (p == null ? BLACK : p.color);
 	}
 
+	/**返回该节点的父节点*/
 	private static <K, V> Entry<K, V> parentOf(Entry<K, V> p) {
 		return (p == null ? null : p.parent);
 	}
@@ -2154,11 +2157,11 @@ public class TreeMap<K, V> extends AbstractMap<K, V> implements NavigableMap<K, 
 		if (p != null)
 			p.color = c;
 	}
-
+	/**返回该节点的左子节点*/
 	private static <K, V> Entry<K, V> leftOf(Entry<K, V> p) {
 		return (p == null) ? null : p.left;
 	}
-
+	/**返回该节点的右子节点*/
 	private static <K, V> Entry<K, V> rightOf(Entry<K, V> p) {
 		return (p == null) ? null : p.right;
 	}
@@ -2201,12 +2204,15 @@ public class TreeMap<K, V> extends AbstractMap<K, V> implements NavigableMap<K, 
 		}
 	}
 
-	/** From CLR */
+	/** From CLR 
+	 * 插入节点后修复红黑树
+	 * */
 	private void fixAfterInsertion(Entry<K, V> x) {
 		x.color = RED;
-
+		// 直到 x 节点的父节点不是根，且 x 的父节点不是红色
 		while (x != null && x != root && x.parent.color == RED) {
 			if (parentOf(x) == leftOf(parentOf(parentOf(x)))) {
+				// 如果 x 的父节点是其父节点的左子节点
 				Entry<K, V> y = rightOf(parentOf(parentOf(x)));
 				if (colorOf(y) == RED) {
 					setColor(parentOf(x), BLACK);
