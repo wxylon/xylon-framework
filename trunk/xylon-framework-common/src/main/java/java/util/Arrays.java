@@ -2855,8 +2855,7 @@ public class Arrays {
      */
     public static char[] copyOf(char[] original, int newLength) {
         char[] copy = new char[newLength];
-        System.arraycopy(original, 0, copy, 0,
-                         Math.min(original.length, newLength));
+        System.arraycopy(original, 0, copy, 0, Math.min(original.length, newLength));
         return copy;
     }
 
