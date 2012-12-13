@@ -19,7 +19,7 @@ public class DynamicController{
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(HttpServletRequest request, ModelMap model) {
 		iService.hello();
-		return "/hc_dk";
+		return "/index";
 	}
 	
 	@RequestMapping(value = "/index.html", method = RequestMethod.GET)
