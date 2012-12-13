@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-	<title>慧聪网-信用贷款</title>
-	<link href="http://image.hc360.com/daikuan/1117/index.css" type="text/css" rel="stylesheet" />
+	<title>jquery.blockUI-demo</title>
 	<base target="_blank" />
-	<script type="text/javascript" src="../script/jquery/jquery-1.5.2.js"></script>
-	<script type="text/javascript" src="../script/jquery/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="script/jquery/jquery-1.5.2.js"></script>
+	<script type="text/javascript" src="script/jquery/jquery.blockUI.js"></script>
 </head>
-<body>
-	<input type="button" onclick="showBlock();" value="test"/>
+<body >
+	<div style="margin-left: 500px; margin-top: 300px;">
+		<input type="button" onclick="showBlock();" value="jquery.blockUI"/>
+	</div>
 </body>
 <script language="JavaScript">  
 function showBlock(){  
@@ -19,7 +20,7 @@ function showBlock(){
     	   overlayCSS: { opacity:'0.0' },
     	   forceIframe:true
     	   });  
-       setTimeout('hideBlock()',20000);//2000毫秒后调用hideBlock()  
+       setTimeout('hideBlock()',2000);//2000毫秒后调用hideBlock()  
 }  
 function hideBlock(){  
   jQuery.unblockUI();  
