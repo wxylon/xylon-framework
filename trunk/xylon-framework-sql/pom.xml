@@ -4,6 +4,7 @@
     <artifactId>xylon-framework-parent</artifactId>
     <groupId>com.xylon.framework</groupId>
     <version>1.0</version>
+    <relativePath>../xylon-framework-parent</relativePath>
   </parent>
   
   <groupId>com.xylon.framework</groupId>
