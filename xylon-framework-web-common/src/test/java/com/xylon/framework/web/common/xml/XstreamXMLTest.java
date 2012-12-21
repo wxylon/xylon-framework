@@ -6,6 +6,7 @@ package com.xylon.framework.web.common.xml;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +33,14 @@ public class XstreamXMLTest {
 			content.setId("ID-" + i);
 			content.setPath("Â·¾¶-" + i);
 			content.setTitle("±êÌâ-" + i);
+			content.setPrice(BigDecimal.valueOf(2333434343334.1231321));
 			List<Picture> pictures = new ArrayList<Picture>();
 			for(int k = 0; k <= i; k++){
 				Picture picture = new Picture();
 				picture.setImgPath("path" + k);
 				picture.setDescription("×¢ÊÍ " + k);
 				pictures.add(picture);
+				picture.setPrice(BigDecimal.valueOf(2333434343334.1231321));
 			}
 			content.setPictures(pictures);
 			contents.add(content);
@@ -65,7 +68,8 @@ public class XstreamXMLTest {
 		pw.flush();
 		System.out.println(w.toString());
 		
-		XStream xsi = new XStream(new DomDriver());
+		
+		xs = new XStream();
 		xs.autodetectAnnotations(true);
 		xs.alias("list", List.class);
 		xs.alias("class", Content.class);
@@ -74,8 +78,10 @@ public class XstreamXMLTest {
 		for(int i = 0 ; i < sources.size();  i++){
 			Content content = (Content)sources.get(i);
 			System.out.print(content.getAuthor()+"\t\t");
+			System.out.print(content.getPrice()+"\t\t");
 			for(Picture picture : content.getPictures()){
 				System.out.print(picture.getImgPath()+"\t\t");
+				System.out.print(picture.getPrice()+"\t\t");
 			}
 			System.out.println();
 		}
