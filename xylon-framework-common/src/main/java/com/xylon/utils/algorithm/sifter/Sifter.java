@@ -30,9 +30,14 @@ public class Sifter {
 
 	    for (int i = 1; i < N; i++){
 	        for (int j = i; j <= 6*i; j++)
-	            cout << j << "->" << dp[i][j] << " ";
-	        cout << endl;
+	        	System.out.println("<<" + j + "<< -> << " + dp[i][j] + "<<  ");
+//	            cout << j << "->" << dp[i][j] << " ";
+//	        cout << endl;
 	    }
 	    return 0;
+	}
+	
+	public static void  main(String[] args){
+		sifter();
 	}
 }
