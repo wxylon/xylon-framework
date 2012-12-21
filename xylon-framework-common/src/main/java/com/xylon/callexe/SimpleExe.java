@@ -13,7 +13,7 @@ public class SimpleExe {
 	public static void main(String[] args) {
 		Process p;
 		try {
-			p = Runtime.getRuntime().exec("F:\\exetest\\test1.exe 10");
+			p = Runtime.getRuntime().exec("D:\\csv2sqlserver\\dist\\main.exe \"testAuto\" \"ftp download\" \"44\"");
 			p.waitFor();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -5,6 +5,7 @@
 package com.xylon.callexe;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -21,10 +22,10 @@ public class CallExe {
 	// 2.0调用其他的可执行文件，例如：自己制作的exe，或是下载安装的软件
 	public static void openMyExe() {
 		String text = null;
-		String command = "F:\\exetest\\test1.exe 10";// exe,bat文件名OR
+		String command = "D:\\csv2sqlserver\\dist\\main.exe \"autoTest\" \"ftp download\" \"78\"";// exe,bat文件名OR
 																	// DOS命令
 		try {
-			Process proc = Runtime.getRuntime().exec(command);
+			Process proc = Runtime.getRuntime().exec(command, null, new File("D:\\csv2sqlserver\\dist\\"));
 			BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 			while ((text = in.readLine()) != null) {
 				System.out.println(text); // 输出测试
