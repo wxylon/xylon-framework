@@ -1,0 +1,7 @@
+spring Quartz 工作框架原理：
+	（1）spring对Quartz的再次封装。
+	（2）scheduler是一个计划调度器容器，容器里面可以盛放众多的JobDetail和trigger，当容器启动后，里面的每个JobDetail都会根据trigger按部就班自动去执行。
+	（3）JobDetail是一个可执行的工作。
+	（4）Trigger代表何时去调用计划。
+	（5）scheduler是个容器，容器中有一个线程池，用来并行调度执行每个作业，这样可以提高容器效。
+	（6）Quartz 容器的关闭方式也很简单，如果是Spring整合，则有两种方法，一种是关闭Spring容器，一种是获取到SchedulerFactoryBean实 例，然后调用一个shutdown就搞定了。如果是Quartz独立使用，则直接调用scheduler.shutdown(true);
