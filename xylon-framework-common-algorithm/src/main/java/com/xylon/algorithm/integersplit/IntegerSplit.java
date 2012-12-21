@@ -5,6 +5,7 @@
 package com.xylon.algorithm.integersplit;
 
 /**
+ * 正整数拆分法
  * @author wxylon@gmail.com
  * @date 2012-8-14
  */
