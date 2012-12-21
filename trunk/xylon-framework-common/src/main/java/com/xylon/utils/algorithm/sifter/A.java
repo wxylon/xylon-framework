@@ -43,15 +43,15 @@ public class A {
 			num--;
 			System.out.println("递归：" + num);
 			for (int i = 0; i < n.length; i++) {
-				System.out.print("i:" + i);
+				//System.out.print("i:" + i);
 				for (int j = 0; j < n.length - i - 1; j++) {
 					// 每次减少一位
 					n[i] += n[j + i + 1];
-					System.out.print("; j:" + j);
-					System.out.print("; n[" + i + "]:" + n[i]);
+					//System.out.print("; j:" + j);
+					//System.out.print("; n[" + i + "]:" + n[i]);
 				}
-				System.out.println();
-				print(n);
+				//System.out.println();
+				//print(n);
 			}
 			exec(n, num);
 		}
@@ -205,22 +205,22 @@ public class A {
 		int count = 3;
 		// 计算骰子组合的总数（无序）
 		int[] x = A.exec(n, count);
-		// int sum = 0;
-		// for(int i=0;i<x.length;i++){
-		// System.out.println(x[i]);
-		// sum+=x[i];
-		// }
-		// System.out.println("最后的总和："+sum);
-		//
-		// //遍历骰子（排列或组合由 isCalculateCount 属性控制）
-		// A.isCalculateCount = false;
-		// A.verify(A.get(count),6);
-		//
-		// //概论统计
-		// for(java.util.Map.Entry<Integer,Integer> entry : map.entrySet()){
-		// Integer key = entry.getKey();
-		// Integer value = entry.getValue();
-		// System.out.println("骰子掷出的和: " + key + "  出现次数:" + value);
-		// }
+		 int sum = 0;
+		 for(int i=0;i<x.length;i++){
+		 System.out.println(x[i]);
+		 sum+=x[i];
+		 }
+		 System.out.println("最后的总和："+sum);
+		
+		 //遍历骰子（排列或组合由 isCalculateCount 属性控制）
+		 A.isCalculateCount = true;
+		 A.verify(A.get(count),6);
+		
+		 //概论统计
+		 for(java.util.Map.Entry<Integer,Integer> entry : map.entrySet()){
+		 Integer key = entry.getKey();
+		 Integer value = entry.getValue();
+		 System.out.println("骰子掷出的和: " + key + "  出现次数:" + value);
+		 }
 	}
 }
