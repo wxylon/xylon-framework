@@ -13,11 +13,11 @@ public class CodingTest {
 	
 	public static void test(){
 		try {
-			byte[] b = codes.getBytes();
-			for(byte k : b){
-				System.out.println("    十进制："+k);
-				System.out.println("十六进制："+Integer.toHexString(k));
-				System.out.println("    二进制："+Integer.toBinaryString(k));
+			for(int i = 0; i < codes.length(); i++){
+				char k = codes.charAt(i);
+				System.out.println("    十进制："+(long)k );
+				System.out.println("十六进制："+Long.toHexString(k));
+				System.out.println("    二进制："+Long.toBinaryString(k));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
