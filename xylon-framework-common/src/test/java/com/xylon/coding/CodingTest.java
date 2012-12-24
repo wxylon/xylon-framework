@@ -1,14 +1,12 @@
 package com.xylon.coding;
 
-import java.io.UnsupportedEncodingException;
-
 /**
  * http://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/index.html?ca=drs-
  * @author Administrator
  */
 public class CodingTest {
 	
-	public static String codes = "Äãa";
+	public static String codes = "ä½ a";
 	public static void main(String[] args) {
 		test();
 	}
@@ -17,9 +15,9 @@ public class CodingTest {
 		try {
 			byte[] b = codes.getBytes();
 			for(byte k : b){
-				System.out.println("    Ê®½øÖÆ£º"+k);
-				System.out.println("Ê®Áù½øÖÆ£º"+Integer.toHexString(k));
-				System.out.println("    ¶ş½øÖÆ£º"+Integer.toBinaryString(k));
+				System.out.println("    åè¿›åˆ¶ï¼š"+k);
+				System.out.println("åå…­è¿›åˆ¶ï¼š"+Integer.toHexString(k));
+				System.out.println("    äºŒè¿›åˆ¶ï¼š"+Integer.toBinaryString(k));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
