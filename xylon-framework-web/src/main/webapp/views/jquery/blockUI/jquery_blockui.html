@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!--meta http-equiv="X-UA-Compatible" content="IE=8" /-->
 	<title>jquery.blockUI-demo</title>
 	<base target="_blank" />
-	<script type="text/javascript" src="script/jquery/jquery-1.5.2.js"></script>
-	<script type="text/javascript" src="script/jquery/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="http://localhost:8080/xylon-framework-web/script/jquery/jquery-1.5.2.js"></script>
+	<script type="text/javascript" src="http://localhost:8080/xylon-framework-web/script/jquery/jquery.blockUI.js"></script>
 </head>
 <body >
 	<div style="margin-left: 500px; margin-top: 300px;">
@@ -15,12 +16,11 @@
 <script language="JavaScript">  
 function showBlock(){  
        jQuery.blockUI({ 
-    	   message: "处理中，请稍候...",
+    	   message: "澶勭悊涓紝璇风◢鍊�...",
     	   css: {color:'#fff',border:'3px solid #aaa',backgroundColor:'#CC3300'},
-    	   overlayCSS: { opacity:'0.0' },
-    	   forceIframe:true
+    	   overlayCSS: { opacity:'0.0' }
     	   });  
-       setTimeout('hideBlock()',2000);//2000毫秒后调用hideBlock()  
+       setTimeout('hideBlock()',2000);//2000姣鍚庤皟鐢╤ideBlock()  
 }  
 function hideBlock(){  
   jQuery.unblockUI();  
