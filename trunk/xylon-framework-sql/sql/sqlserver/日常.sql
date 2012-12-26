@@ -43,4 +43,13 @@ select UPPER('aaAAds');
 --判断是否为数据  ISNUMERIC('fsfds') = 0 为非数据， =1为数字
 select ISNUMERIC('fsfds')
 
+--生成报表错误:SqlMapClient operation; bad SQL grammar []; nested exception is com.ibatis.common.jdbc.exception.NestedSQLException:    
+--- The error occurred in mappers/srcb_yk_chukufanghuofudanhuizong.xml.   
+--- The error occurred while applying a parameter map.   
+--- Check the yk_chukufanghuofudanhuizong.getChukufanghuofudanhuizong-InlineParameterMap.   
+--- Check the results (failed to retrieve results).   
+--- Cause: com.microsoft.sqlserver.jdbc.SQLServerException: 数据库 'tempdb' 的事务日志已满。若要查明无法重用日志中的空间的原因，请参阅 sys.databases 中的 log_reuse_wait_desc 列。
+--收缩数据库 
+dbcc   shrinkdatabase(auto2012Q4) 
+
 
