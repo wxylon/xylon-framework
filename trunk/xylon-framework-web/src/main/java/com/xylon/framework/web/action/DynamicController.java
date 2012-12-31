@@ -26,4 +26,11 @@ public class DynamicController{
 	public String indexForWeblogic(HttpServletRequest request, ModelMap model) {
 		return index(request, model);
 	}
+	
+	@RequestMapping(value = "/demoes/debugDispatcherServlet.html", method = RequestMethod.GET)
+	public String debugDispatcherServlet(HttpServletRequest request, ModelMap model){
+		String id = request.getParameter("id");
+		model.put("newId", "id:"+id);
+		return "/demoes/debugDispatcherServlet";
+	}
 }
