@@ -16,6 +16,7 @@ import org.junit.Test;
 
 import com.xylon.framework.po.Content;
 import com.xylon.framework.po.Picture;
+import com.xylon.framework.po.Image;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONSerializer;
@@ -45,13 +46,22 @@ public class NetSfJsonTests{
 				pictures.add(picture);
 				picture.setPrice(BigDecimal.valueOf(2333434343334.1231321));
 			}
+			List<Image> images = new ArrayList<Image>();
+			for(int k = 0; k <= i; k++){
+				Image image = new Image();
+				image.setUrl("111");
+				image.setSize("111");
+				images.add(image);
+			}
+			content.setImages(images);
 			content.setPictures(pictures);
 			contents.add(content);
 		}
 	}
 	
-	@Test
-	public void testBean2Json() throws Exception{
+	
+//	@Test
+	public void testBean2Json2() throws Exception{
 		JSONArray jsonArray = (JSONArray) JSONSerializer.toJSON(contents);
 		System.out.println(jsonArray.toString());
 		
@@ -67,6 +77,33 @@ public class NetSfJsonTests{
 			for(Picture picture : content.getPictures()){
 				System.out.print(picture.getImgPath()+"\t\t");
 				System.out.print(picture.getPrice()+"\t\t");
+			}
+			System.out.println();
+		}
+	}
+	
+	
+	@Test
+	public void testBean2Json() throws Exception{
+		JSONArray jsonArray = (JSONArray) JSONSerializer.toJSON(contents);
+		System.out.println(jsonArray.toString());
+		
+		JSONArray ja = JSONArray.fromObject(jsonArray.toString());
+		Map<String, Class<?>> classMap = new HashMap<String, Class<?>>();
+		classMap.put("pictures", Picture.class);
+		classMap.put("images", Image.class);
+		List<Content> contents = JSONArray.toList(ja, Content.class, classMap);
+		for(int i = 0 ; i < contents.size();  i++){
+			Content content = (Content)contents.get(i);
+			System.out.print(content.getAuthor()+"\t\t");
+			System.out.print(content.getPrice()+"\t\t");
+			for(Picture picture : content.getPictures()){
+				System.out.print(picture.getImgPath()+"\t\t");
+				System.out.print(picture.getPrice()+"\t\t");
+			}
+			for(Image image : content.getImages()){
+				System.out.print(image.getSize()+"\t\t");
+				System.out.print(image.getUrl()+"\t\t");
 			}
 			System.out.println();
 		}

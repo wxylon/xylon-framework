@@ -19,6 +19,7 @@ public class Content implements Serializable {
 	private String id;
 	private String title;
 	private List<Picture> pictures;
+	private List<Image> images;
 	private String path;
 	private BigDecimal price;
 
@@ -68,5 +69,13 @@ public class Content implements Serializable {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 }
