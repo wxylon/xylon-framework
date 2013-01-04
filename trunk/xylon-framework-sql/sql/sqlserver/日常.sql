@@ -52,4 +52,9 @@ select ISNUMERIC('fsfds')
 --收缩数据库 
 dbcc   shrinkdatabase(auto2012Q4) 
 
+--从过程缓存中删除所有元素
+DBCC FREEPROCCACHE
+--从缓冲池中删除所有清除缓冲区
+DBCC DROPCLEANBUFFERS
+
 
