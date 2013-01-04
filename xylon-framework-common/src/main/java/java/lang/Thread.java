@@ -20,6 +20,7 @@ import sun.security.util.SecurityConstants;
 
 
 /**
+ * native参见：openjdk-6-src-b27-26_oct_2012\jdk\src\share\native
  * A <i>thread</i> is a thread of execution in a program. The Java 
  * Virtual Machine allows an application to have multiple threads of 
  * execution running concurrently. 
@@ -118,7 +119,8 @@ class Thread implements Runnable {
     static {
         registerNatives();
     }
-
+    
+    /**线程名称字符数组*/
     private char	name[];
     private int         priority;
     private Thread	threadQ;
