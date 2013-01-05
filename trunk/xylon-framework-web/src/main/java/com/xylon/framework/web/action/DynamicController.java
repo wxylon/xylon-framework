@@ -3,6 +3,8 @@ package com.xylon.framework.web.action;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,8 @@ import com.xylon.framework.service.IService;
 
 @Controller
 public class DynamicController{
+	
+	private static Log log = LogFactory.getLog(DynamicController.class);
 	
 	@Resource
 	private IService iService;
@@ -32,5 +36,11 @@ public class DynamicController{
 		String id = request.getParameter("id");
 		model.put("newId", "id:"+id);
 		return "/demoes/debugDispatcherServlet";
+	}
+	
+	@RequestMapping(value = "/demoes/spring-local-theme.html", method = RequestMethod.GET)
+	public String d1(HttpServletRequest request, ModelMap model){
+		log.debug("DynamicController--->d1");
+		return "/demoes/spring-local-theme";
 	}
 }
