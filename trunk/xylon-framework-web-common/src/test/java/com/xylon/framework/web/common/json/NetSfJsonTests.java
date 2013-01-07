@@ -33,16 +33,16 @@ public class NetSfJsonTests{
 	public void run() throws Exception{
 		for(int i = 0; i < 5; i++){
 			Content content = new Content();
-			content.setAuthor("×÷Õß-" + i);
+			content.setAuthor("ä½œè€…-" + i);
 			content.setId("ID-" + i);
-			content.setPath("Â·¾¶-" + i);
-			content.setTitle("±êÌâ-" + i);
+			content.setPath("è·¯å¾„-" + i);
+			content.setTitle("æ ‡é¢˜-" + i);
 			content.setPrice(BigDecimal.valueOf(2333434343334.1231321));
 			List<Picture> pictures = new ArrayList<Picture>();
 			for(int k = 0; k <= i; k++){
 				Picture picture = new Picture();
 				picture.setImgPath("path" + k);
-				picture.setDescription("×¢ÊÍ " + k);
+				picture.setDescription("æ³¨é‡Š " + k);
 				pictures.add(picture);
 				picture.setPrice(BigDecimal.valueOf(2333434343334.1231321));
 			}
@@ -111,7 +111,7 @@ public class NetSfJsonTests{
 	
 //	@Test
 	public void testJson2Bean() throws Exception{
-		String s = "[{\"author\":\"×÷Õß-0\",\"id\":\"ID-0\",\"path\":\"Â·¾¶-0\",\"pictures\":[{\"description\":\"×¢ÊÍ 0\",\"imgPath\":\"path0\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"±êÌâ-0\"},{\"author\":\"×÷Õß-1\",\"id\":\"ID-1\",\"path\":\"Â·¾¶-1\",\"pictures\":[{\"description\":\"×¢ÊÍ 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 1\",\"imgPath\":\"path1\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"±êÌâ-1\"},{\"author\":\"×÷Õß-2\",\"id\":\"ID-2\",\"path\":\"Â·¾¶-2\",\"pictures\":[{\"description\":\"×¢ÊÍ 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 2\",\"imgPath\":\"path2\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"±êÌâ-2\"},{\"author\":\"×÷Õß-3\",\"id\":\"ID-3\",\"path\":\"Â·¾¶-3\",\"pictures\":[{\"description\":\"×¢ÊÍ 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 2\",\"imgPath\":\"path2\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 3\",\"imgPath\":\"path3\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"±êÌâ-3\"},{\"author\":\"×÷Õß-4\",\"id\":\"ID-4\",\"path\":\"Â·¾¶-4\",\"pictures\":[{\"description\":\"×¢ÊÍ 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 2\",\"imgPath\":\"path2\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 3\",\"imgPath\":\"path3\",\"price\":234.1231321},{\"description\":\"×¢ÊÍ 4\",\"imgPath\":\"path4\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"±êÌâ-4\"}]";
+		String s = "[{\"author\":\"ä½œè€…-0\",\"id\":\"ID-0\",\"path\":\"è·¯å¾„-0\",\"pictures\":[{\"description\":\"æ³¨é‡Š 0\",\"imgPath\":\"path0\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"æ ‡é¢˜-0\"},{\"author\":\"ä½œè€…-1\",\"id\":\"ID-1\",\"path\":\"è·¯å¾„-1\",\"pictures\":[{\"description\":\"æ³¨é‡Š 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 1\",\"imgPath\":\"path1\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"æ ‡é¢˜-1\"},{\"author\":\"ä½œè€…-2\",\"id\":\"ID-2\",\"path\":\"è·¯å¾„-2\",\"pictures\":[{\"description\":\"æ³¨é‡Š 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 2\",\"imgPath\":\"path2\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"æ ‡é¢˜-2\"},{\"author\":\"ä½œè€…-3\",\"id\":\"ID-3\",\"path\":\"è·¯å¾„-3\",\"pictures\":[{\"description\":\"æ³¨é‡Š 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 2\",\"imgPath\":\"path2\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 3\",\"imgPath\":\"path3\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"æ ‡é¢˜-3\"},{\"author\":\"ä½œè€…-4\",\"id\":\"ID-4\",\"path\":\"è·¯å¾„-4\",\"pictures\":[{\"description\":\"æ³¨é‡Š 0\",\"imgPath\":\"path0\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 1\",\"imgPath\":\"path1\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 2\",\"imgPath\":\"path2\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 3\",\"imgPath\":\"path3\",\"price\":234.1231321},{\"description\":\"æ³¨é‡Š 4\",\"imgPath\":\"path4\",\"price\":234.1231321}],\"price\":234.1231321,\"title\":\"æ ‡é¢˜-4\"}]";
 		JSONArray ja = JSONArray.fromObject(s);
 		
 		Map<String, Class<Picture>> classMap = new HashMap<String, Class<Picture>>();

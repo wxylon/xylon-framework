@@ -29,16 +29,16 @@ public class XstreamXMLTest {
 	public void run() throws Exception{
 		for(int i = 0; i < 5; i++){
 			Content content = new Content();
-			content.setAuthor("×÷Õß-" + i);
+			content.setAuthor("ä½œè€…-" + i);
 			content.setId("ID-" + i);
-			content.setPath("Â·¾¶-" + i);
-			content.setTitle("±êÌâ-" + i);
+			content.setPath("è·¯å¾„-" + i);
+			content.setTitle("æ ‡é¢˜-" + i);
 			content.setPrice(BigDecimal.valueOf(2333434343334.1231321));
 			List<Picture> pictures = new ArrayList<Picture>();
 			for(int k = 0; k <= i; k++){
 				Picture picture = new Picture();
 				picture.setImgPath("path" + k);
-				picture.setDescription("×¢ÊÍ " + k);
+				picture.setDescription("æ³¨é‡Š " + k);
 				pictures.add(picture);
 				picture.setPrice(BigDecimal.valueOf(2333434343334.1231321));
 			}
