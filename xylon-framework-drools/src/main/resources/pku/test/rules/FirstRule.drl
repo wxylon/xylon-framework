@@ -1,0 +1,31 @@
+#created on: 2011-12-5
+package ReRules
+
+#list any import classes here.
+import pku.test.domain.simple.PeopleEvent
+import pku.test.domain.simple.TemperatureEvent
+import pku.test.domain.simple.SimpleEvent
+#declare any global variables here
+
+#query segments starts
+query "people fact"(int $roomId)
+	simpleEvent:PeopleEvent(roomId==$roomId);
+end
+query "temperature fact"(int $roomId)
+	simpleEvent:TemperatureEvent(roomId==$roomId);
+end
+#query segments ends
+ 
+
+
+rule "PE Rules"
+    when
+        #conditions 
+        $p:PeopleEvent(isComing==true)
+        $t:TemperatureEvent(temperature<20, roomId==$p.getRoomId())
+    then
+        #actions
+        System.out.println("/******Situmulate the condition******/");
+end	
+
+
