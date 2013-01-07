@@ -22,7 +22,7 @@ public class PoiJxlsTests {
 	@Test
 	public void testJxls(){
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("testif", "²âÊÔÒ»¸öÀı×Ó");
+		data.put("testif", "æµ‹è¯•ä¸€ä¸ªä¾‹å­");
 		data.put("testTrinocular", "");
 		JxlsUtils.generateExcel(source, data, target);
 	}
