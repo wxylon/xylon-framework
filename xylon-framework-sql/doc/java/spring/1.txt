@@ -1,0 +1,30 @@
+1.引言
+
+2.介绍
+2.1.主题解析器(Theme resolver): 
+能够解析你的web应用所使用的主题，以提供个性化的布局。
+2.2.使用：
+	<bean id="themeSource" class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<property name="basenamePrefix" value="themes/theme-" />
+	</bean>
+	<bean id="themeResolver" class="org.springframework.web.servlet.theme.CookieThemeResolver">
+		<property name="defaultThemeName" value="blue"/>
+	</bean>
+	<mvc:interceptors>
+    	<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+    		<property name="paramName" value="theme" />
+    	</bean>
+	</mvc:interceptors>
+3.	源码解析：
+3.1.	初始化ThemeResolver,如果未配置ThemeResolver,则使用默认的FixedThemeResolver
+  DispatcherServlet. onRefresh(…);
+      |_ initStrategies(…)
+        |_ initThemeResolver(…)
+3.2.	执行过程处理：每次请求都会设置相关的属性；
+  DispatcherServlet. doService(…)
+      request.setAttribute(WEB_APPLICATION_CONTEXT_ATTRIBUTE, getWebApplicationContext());
+      request.setAttribute(LOCALE_RESOLVER_ATTRIBUTE, this.localeResolver);
+      request.setAttribute(THEME_RESOLVER_ATTRIBUTE, this.themeResolver);
+      request.setAttribute(THEME_SOURCE_ATTRIBUTE, getThemeSource());
+
+3.3. spring自定义宏参见；AbstractTemplateViewResolver
