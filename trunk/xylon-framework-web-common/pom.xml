@@ -10,6 +10,7 @@
 	<groupId>com.xylon.framework</groupId>
 	<artifactId>xylon-framework-web-common</artifactId>
 	<version>1.0</version>
+	<packaging>war</packaging>
 	
 	<!-- 项目属性 -->
 	<properties>
