@@ -1,0 +1,98 @@
+http://www.jb51.net/article/31172.htm
+1.概述：
+  HBase是一个分布式的、面向列的开源数据库,源于google的一篇论文《bigtable：一个结构化数据的分布式存储系统》。
+  HBase是Google Bigtable的开源实现，它利用Hadoop HDFS作为其文件存储系统，利用Hadoop MapReduce来处理HBase中的海量数据，利用Zookeeper作为协同服务。
+2.HBase以表的形式存储数据。表有行和列组成。列划分为若干个列族/列簇(column family)。
+
+
+
+
+1.hbase安装：
+  hbase-0.94.0.tar.gz
+  
+2.环境配置：
+[root@hd1 data]# vi /etc/profile
+
+export HBASE_HOME=/opt/hbase/hbase-0.94.0/
+export PATH=$JAVA_HOME/bin:$HBASE_HOME/bin:$PATH
+
+[root@hd1 data]# source /etc/profile
+
+3.配置文件修改：
+[root@hd1 data]# vi /opt/hbase/hbase-0.94.0/conf/hbase-site.xml
+
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+        <property>
+                <name>hbase.rootdir</name>
+                <value>/opt/hbase/data</value>
+        </property>
+</configuration>
+
+4.启动与关闭
+[root@hd1 data]# /opt/hbase/hbase-0.94.0/bin/start-hbase.sh 
+
+[root@hd1 data]# /opt/hbase/hbase-0.94.0/bin/stop-hbase.sh 
+
+5.测试：
+
+[root@hd1 data]# /opt/hbase/hbase-0.94.0/bin/hbase shell    
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.0, r1332822, Tue May  1 21:43:54 UTC 2012
+
+hbase(main):001:0> 
+
+##创建表
+hbase(main):006:0> create 'user', 'name', 'passwd', 'age'
+0 row(s) in 1.0780 seconds
+
+##查看所有表
+hbase(main):009:0> list
+TABLE                                                                           
+user                                                                            
+1 row(s) in 0.0340 seconds
+
+
+##删除表
+hbase(main):008:0> disable 'user'
+0 row(s) in 3.0230 seconds
+hbase(main):010:0> drop 'user'
+0 row(s) in 1.5010 seconds
+
+##查看表结构
+hbase(main):005:0> describe 'user'
+DESCRIPTION                                                             ENABLED                               
+ {NAME => 'user', FAMILIES => [{NAME => 'age', DATA_BLOCK_ENCODING => ' true                                  
+ NONE', BLOOMFILTER => 'NONE', REPLICATION_SCOPE => '0', VERSIONS => '3                                       
+ ', COMPRESSION => 'NONE', MIN_VERSIONS => '0', TTL => '2147483647', KE                                       
+ EP_DELETED_CELLS => 'false', BLOCKSIZE => '65536', IN_MEMORY => 'false                                       
+ ', ENCODE_ON_DISK => 'true', BLOCKCACHE => 'true'}, {NAME => 'name', D                                       
+ ATA_BLOCK_ENCODING => 'NONE', BLOOMFILTER => 'NONE', REPLICATION_SCOPE                                       
+  => '0', VERSIONS => '3', COMPRESSION => 'NONE', MIN_VERSIONS => '0',                                        
+ TTL => '2147483647', KEEP_DELETED_CELLS => 'false', BLOCKSIZE => '6553                                       
+ 6', IN_MEMORY => 'false', ENCODE_ON_DISK => 'true', BLOCKCACHE => 'tru                                       
+ e'}, {NAME => 'passwd', DATA_BLOCK_ENCODING => 'NONE', BLOOMFILTER =>                                        
+ 'NONE', REPLICATION_SCOPE => '0', VERSIONS => '3', COMPRESSION => 'NON                                       
+ E', MIN_VERSIONS => '0', TTL => '2147483647', KEEP_DELETED_CELLS => 'f                                       
+ alse', BLOCKSIZE => '65536', IN_MEMORY => 'false', ENCODE_ON_DISK => '                                       
+ true', BLOCKCACHE => 'true'}]}                                                                               
+1 row(s) in 0.5280 seconds
+
+
+##插入值：表名，列号，列名，列值
+hbase(main):007:0> put 'user', '1', 'name', 'xiaohei'
+0 row(s) in 0.6160 seconds
+
+##扫描所有数据 
+hbase(main):014:0> scan 'user'
+ROW                          COLUMN+CELL                                                                      
+ 1                           column=name:, timestamp=1359601504499, value=xiaohei                             
+1 row(s) in 0.1290 seconds
+
+
+##统计行数
+hbase(main):022:0> count 'user'
+1 row(s) in 0.1090 seconds
+
