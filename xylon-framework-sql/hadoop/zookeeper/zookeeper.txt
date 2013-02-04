@@ -1,0 +1,27 @@
+1.概述：
+  ZooKeeper是Hadoop的正式子项目，它是一个针对大型分布式系统的可靠协调系统，提供的功能包括：配置维护、名字服务、分布式同步、组服务等。
+  ZooKeeper的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。
+
+2.下载：
+  http://mirror.bjtu.edu.cn/apache/zookeeper/zookeeper-3.4.3/zookeeper-3.4.3.tar.gz
+
+3.安装：
+##配置zoo.cfg
+
+#conf/目录下有个zoo_sample.cfg，是样板配置文件
+#复制一份成zoo.cfg
+#里面有两个比较重要的配置：
+#dataDir=/var/lib/zookeeper # 数据存放位置，可根据需要修改
+#clientPort=2181 # 服务监听端口，可根据需要修改
+
+[root@hd1 conf]# cp zoo_sample.cfg zoo.cfg
+##检查端口是否占用
+[root@hd1 conf]# lsof -i:2181
+
+##启动服务
+[root@hd1 zookeeper-3.4.3]# ./bin/zkServer.sh start
+JMX enabled by default
+Using config: /opt/zookeeper/zookeeper-3.4.3/bin/../conf/zoo.cfg
+Starting zookeeper ... STARTED
+
+
