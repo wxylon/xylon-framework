@@ -4,32 +4,65 @@
 
 package com.xylon.zookeeper;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.apache.zookeeper.AsyncCallback;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * http://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/
- * CreateMode.PERSISTENT				创建后只要不删就永久存在
- * CreateMode.EPHEMERAL					会话结束年结点自动被删除
- * CreateMode.SEQUENTIAL				节点名末尾会自动追加一个10位数的单调递增的序号
- * CreateMode.PERSISTENT_SEQUENTIAL		结合PERSISTENT和SEQUENTIAL
- * CreateMode.EPHEMERAL_SEQUENTIAL		结合EPHEMERAL和SEQUENTIAL
+ * @see CreateMode.PERSISTENT				创建后只要不删就永久存在
+ * @see CreateMode.EPHEMERAL				会话结束年结点自动被删除
+ * @see CreateMode.SEQUENTIAL				节点名末尾会自动追加一个10位数的单调递增的序号
+ * @see CreateMode.PERSISTENT_SEQUENTIAL	结合PERSISTENT和SEQUENTIAL
+ * @see CreateMode.EPHEMERAL_SEQUENTIAL		结合EPHEMERAL和SEQUENTIAL
  * @author wxylon@gmail.com
  * @date 2013-2-1
  */
 public class ZookeeperTest {
-	public static final String SERVER_IP = "10.12.207.164";
-	public static final String SERVER_PORT = "2181";
+	public static final String SERVER_IP_PORT = "127.0.0.1:2181";
 	public static final int SERVER_TIMEOUT = 20000;
+	public ZooKeeper zk = null;
+	public AtomicInteger seq = new AtomicInteger();
+	
+	@Before
+	public void init() throws Exception{
+		// 创建一个与服务器的连接
+		zk = new ZooKeeper(SERVER_IP_PORT, 
+			 SERVER_TIMEOUT, new Watcher() { 
+	            // 监控所有被触发的事件
+	            public void process(WatchedEvent event) { 
+	                System.out.println("已经触发了" + event.toString() + "事件！"); 
+	            } 
+	        }); 
+	}
 	
 	@Test
+	public void testCreate() throws Exception{
+		
+		zk.create("/wangx" + seq.getAndIncrement(), "ceshi".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+		zk.create("/wangx" + seq.getAndIncrement(), "ceshi".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+		zk.create("/wangx" + seq.getAndIncrement(), "ceshi".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
+		zk.create("/wangx" + seq.getAndIncrement(), "ceshi".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+		Thread.currentThread().sleep(10000);
+		
+//		[zk: 127.0.0.1(CONNECTED) 7] ls /
+//		[wangx0, wangx30000000012, wangx20000000011, wangx1, zookeeper]
+//		[zk: 127.0.0.1(CONNECTED) 8] ls /
+//		[wangx0, wangx20000000011, zookeeper]
+	}
+	
+	
+//	@Test
 	public void test() throws Exception{
 		// 创建一个与服务器的连接
-		ZooKeeper zk = new ZooKeeper(SERVER_IP + ":" +SERVER_PORT, 
+		ZooKeeper zk = new ZooKeeper(SERVER_IP_PORT, 
 				 SERVER_TIMEOUT, new Watcher() { 
 		            // 监控所有被触发的事件
 		            public void process(WatchedEvent event) { 
