@@ -14,7 +14,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.xylon.framework.po.Content;
 import com.xylon.framework.po.Picture;
 
@@ -47,11 +46,15 @@ public class XstreamXMLTest {
 		}
 	}
 	
-//	@Test
+	@Test
 	public void testBean2Json() throws Exception{
 		StringWriter w = new StringWriter();
 		PrintWriter pw = new PrintWriter(w);
 		XStream xs = new XStream();
+		//如果不调用alias方法，进行别名，XStream默认是将包名+类名作为节点名称，也就是<com.xcy.Subscribe>.....</com.xcy.Subscribe>  
+		xs.alias("list", List.class);
+		xs.alias("Content", Content.class);
+		xs.alias("Picture", Picture.class);
 		xs.toXML(contents, pw);
 		pw.flush();
 		System.out.println(w.toString());
@@ -72,7 +75,8 @@ public class XstreamXMLTest {
 		xs = new XStream();
 		xs.autodetectAnnotations(true);
 		xs.alias("list", List.class);
-		xs.alias("class", Content.class);
+		xs.alias("Content", Content.class);
+		xs.alias("Picture", Picture.class);
 		List<Content> sources = (List<Content>) xs.fromXML(w.toString());
 		
 		for(int i = 0 ; i < sources.size();  i++){
