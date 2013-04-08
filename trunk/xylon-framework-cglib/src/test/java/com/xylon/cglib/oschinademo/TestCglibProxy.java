@@ -19,17 +19,14 @@ public class TestCglibProxy {
 	
 	@Test
 	public void main() {
-		Target target = new Target();
 		TestCglibProxy test = new TestCglibProxy();
-		Target proxyTarget = (Target) test.createProxy(Target.class);
+		
+		Enhancer enhancer = new Enhancer();
+		enhancer.setSuperclass(Target.class);
+		enhancer.setCallback(new MyMethodInterceptor());
+		Target proxyTarget = (Target)enhancer.create();
+		
 		String res = proxyTarget.execute();
 		System.out.println(res);
-	}
-
-	public Object createProxy(Class targetClass) {
-		Enhancer enhancer = new Enhancer();
-		enhancer.setSuperclass(targetClass);
-		enhancer.setCallback(new MyMethodInterceptor());
-		return enhancer.create();
 	}
 }

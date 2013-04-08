@@ -16,9 +16,9 @@ import net.sf.cglib.proxy.MethodProxy;
 public class MyMethodInterceptor implements MethodInterceptor {
 
 	public Object intercept(Object object, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
-		System.out.println(">>>MethodInterceptor start...");
+		System.out.println(">>>("+method.getName()+")MethodInterceptor start...");
 		Object result = methodProxy.invokeSuper(object, args);
-		System.out.println(">>>MethodInterceptor ending...");
-		return "hahahh";
+		System.out.println(">>>("+method.getName()+")MethodInterceptor ending...");
+		return result;
 	}
 }
