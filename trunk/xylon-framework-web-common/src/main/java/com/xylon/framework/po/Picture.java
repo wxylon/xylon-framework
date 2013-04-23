@@ -41,4 +41,9 @@ public class Picture implements Serializable {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
+
+	@Override
+	public String toString() {
+		return "Picture [description=" + description + ", imgPath=" + imgPath + ", price=" + price + "]";
+	}
 }

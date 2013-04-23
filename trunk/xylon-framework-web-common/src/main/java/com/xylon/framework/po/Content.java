@@ -78,4 +78,9 @@ public class Content implements Serializable {
 	public void setImages(List<Image> images) {
 		this.images = images;
 	}
+
+	@Override
+	public String toString() {
+		return "Content [author=" + author + ", id=" + id + ", title=" + title + ", pictures=" + pictures + ", images=" + images + ", path=" + path + ", price=" + price + "]";
+	}
 }

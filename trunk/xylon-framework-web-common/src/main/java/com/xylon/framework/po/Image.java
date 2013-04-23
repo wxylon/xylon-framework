@@ -23,5 +23,9 @@ public class Image {
 	public void setSize(String size) {
 		this.size = size;
 	}
+	@Override
+	public String toString() {
+		return "Image [url=" + url + ", size=" + size + "]";
+	}
 }
 

@@ -20,6 +20,8 @@ import com.xylon.framework.po.Image;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONSerializer;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.PropertyFilter;
 
 /**
  * @author wangx
@@ -88,22 +90,35 @@ public class NetSfJsonTests{
 		JSONArray jsonArray = (JSONArray) JSONSerializer.toJSON(contents);
 		System.out.println(jsonArray.toString());
 		
-		JSONArray ja = JSONArray.fromObject(jsonArray.toString());
+		JsonConfig jsonConfig = new JsonConfig();
+		/**一对多或者一对一种的对象类型*/
 		Map<String, Class<?>> classMap = new HashMap<String, Class<?>>();
 		classMap.put("pictures", Picture.class);
 		classMap.put("images", Image.class);
-		List<Content> contents = JSONArray.toList(ja, Content.class, classMap);
+		jsonConfig.setClassMap(classMap);
+		/**list中的对象类型*/
+		jsonConfig.setRootClass(Content.class);
+		jsonConfig.setJsonPropertyFilter(new PropertyFilter() {
+			//return true 忽略指定的属性值，return false;不忽略指定的属性值
+			public boolean apply(Object arg0, String arg1, Object arg2) {
+					if(arg1.equals("author")){
+						return true;
+					}
+				return false;
+			}
+		});
+		
+		JSONArray ja = JSONArray.fromObject(jsonArray.toString(), jsonConfig);
+		List<Content> contents = JSONArray.toList(ja, jsonConfig);
+		
 		for(int i = 0 ; i < contents.size();  i++){
 			Content content = (Content)contents.get(i);
-			System.out.print(content.getAuthor()+"\t\t");
-			System.out.print(content.getPrice()+"\t\t");
+			System.out.print(content);
 			for(Picture picture : content.getPictures()){
-				System.out.print(picture.getImgPath()+"\t\t");
-				System.out.print(picture.getPrice()+"\t\t");
+				System.out.print(picture);
 			}
 			for(Image image : content.getImages()){
-				System.out.print(image.getSize()+"\t\t");
-				System.out.print(image.getUrl()+"\t\t");
+				System.out.print(image);
 			}
 			System.out.println();
 		}
