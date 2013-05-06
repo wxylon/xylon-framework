@@ -64,6 +64,12 @@ ee 5
 
 ##去除重复的
 [xylon@hd1 awk]$ awk -F / '!a[$3]++' awk.txt 
+##查找包含指定字符的行号
+[admin@localhost logs]$ cat -n catalina.out | awk '/418010/'
+##将指定行号的范围记录查出来
+[admin@localhost logs]$ cat -n catalina.out | awk 'NR > 1246231' >> test.log
+
+
 
 
 

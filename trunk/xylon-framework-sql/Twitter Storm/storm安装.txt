@@ -1,0 +1,69 @@
+Twitter Storm安装配置（单机版）笔记 
+参考：http://xumingming.sinaapp.com/179/twitter-storm-%E6%90%AD%E5%BB%BAstorm%E9%9B%86%E7%BE%A4/
+
+http://mirrors.sohu.com/python/2.7.2/Python-2.7.2.tgz
+
+
+http://download.zeromq.org/zeromq-2.1.7.tar.gz
+https://github.com/nathanmarz/jzmq
+
+
+
+#安装Python-2.7.2
+[root@hd1 opt]# tar -zxvf Python-2.7.2.tgz
+[root@hd1 opt]# cd Python-2.7.2
+[root@hd1 Python-2.7.2]# ./configure 
+[root@hd1 Python-2.7.2]# make && make install
+[root@hd1 Python-2.7.2]# vi /etc/ld.so.conf
+
+追加   /usr/local/lib/
+[root@hd1 Python-2.7.2]# ldconfig 
+
+#安装zookeeper
+#参见timetuner
+
+
+#zeromq安装
+[root@hd1 storm]# tar -zxvf zeromq-2.1.11.tar.gz 
+[root@hd1 storm]# cd zeromq-2.1.7
+[root@hd1 zeromq-2.1.7]# ./configure
+[root@hd1 zeromq-2.1.7]# make && make install
+
+#遇到的问题是：Error:cannot link with -luuid, install uuid-dev
+#这是因为没有安装uuid相关的package。
+#解决方法是：# yum install uuid*
+# yum install e2fsprogs*
+# yum install libuuid*
+#问题解决了以后就可以make和make install了，如此这般，zeromq就安装好了，接下来我们安装jzmq
+
+
+##安装jzmq
+[root@hd1 storm]# unzip jzmq-master.zip 
+[root@hd1 storm]# cd jzmq-master
+[root@hd1 jzmq-master]# ./autogen.sh
+[root@hd1 jzmq-master]# ./configure
+[root@hd1 jzmq-master]# make && make install
+
+
+##遇到的问题：autogen.sh: error: could not find libtool.  libtool is required to run autogen.sh.
+## yum install libtool*
+
+
+
+##启动zookeeper
+[root@hd1 storm-0.7.0]# /opt/zookeeper/zookeeper-3.4.3/bin/zkServer.sh start
+JMX enabled by default
+Using config: /opt/zookeeper/zookeeper-3.4.3/bin/../conf/zoo.cfg
+Starting zookeeper ... STARTED
+
+## nimbus 启动
+[root@hd1 storm-0.7.0]# storm nimbus
+## Supervisor  启动
+[root@hd1 storm-0.7.0]# storm supervisor
+## UI 启动
+[root@hd1 storm-0.7.0]# storm ui
+
+
+
+
+

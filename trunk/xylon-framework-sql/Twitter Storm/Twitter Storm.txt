@@ -1,0 +1,17 @@
+http://www.oschina.net/question/12_28017
+
+
+twitter的实时数据处理分析工具-Storm
+
+Twitter在9月19日的Strange Loop大会上公布Storm的代码，是一个类似于Hadoop的即时数据处理工具，由BackType开发的，后来被Twitter收购用于Twitter进行实时数据处理分析。
+
+Twitter列举了Storm的三大类应用：
+
+1. 信息流处理{Stream processing}
+ Storm可用来实时处理新数据和更新数据库，兼具容错性和可扩展性。
+
+2. 连续计算{Continuous computation}
+ Storm可进行连续查询并把结果即时反馈给客户端。比如把Twitter上的热门话题发送到浏览器中。
+
+3. 分布式远程程序调用{Distributed RPC}
+ Storm可用来并行处理密集查询。Storm的拓扑结构是一个等待调用信息的分布函数，当它收到一条调用信息后，会对查询进行计算，并返回查询结果。  举个例子Distributed RPC可以做并行搜索或者处理大集合的数据。
