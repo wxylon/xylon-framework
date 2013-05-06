@@ -1,7 +1,6 @@
 1.概述：
   ZooKeeper是Hadoop的正式子项目，它是一个针对大型分布式系统的可靠协调系统，提供的功能包括：配置维护、名字服务、分布式同步、组服务等。
   ZooKeeper的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。
-
 2.下载：
   http://mirror.bjtu.edu.cn/apache/zookeeper/zookeeper-3.4.3/zookeeper-3.4.3.tar.gz
 
@@ -14,9 +13,22 @@
 #dataDir=/var/lib/zookeeper # 数据存放位置，可根据需要修改
 #clientPort=2181 # 服务监听端口，可根据需要修改
 
+#tickTime ：基本事件单元，以毫秒为单位。它用来指示心跳，最小的 session 过期时间为两倍的 tickTime. 。 
+#dataDir ：存储内存中数据库快照的位置，如果不设置参数，更新事务日志将被存储到默认位置。 
+#clientPort ：监听客户端连接的端口 
+
 [root@hd1 conf]# cp zoo_sample.cfg zoo.cfg
 ##检查端口是否占用
 [root@hd1 conf]# lsof -i:2181
+
+4.操作：
+#ls(查看当前节点数据),
+#ls2(查看当前节点数据并能看到更新次数等数据) ,
+#create(创建一个节点) ,
+#get(得到一个节点，包含数据和更新次数等数据),
+#set(修改节点)
+#delete(删除一个节点)
+#quit(退出)
 
 ##启动服务
 [root@hd1 zookeeper-3.4.3]# ./bin/zkServer.sh start
@@ -24,4 +36,84 @@ JMX enabled by default
 Using config: /opt/zookeeper/zookeeper-3.4.3/bin/../conf/zoo.cfg
 Starting zookeeper ... STARTED
 
+##客户端测试
+[root@hd1 zookeeper]# ./zookeeper-3.4.3/bin/zkCli.sh -server 127.0.0.1:2181
+Connecting to 127.0.0.1:2181
+
+
+[zk: 127.0.0.1:2181(CONNECTED) 1] help
+ZooKeeper -server host:port cmd args
+        connect host:port
+        get path [watch]
+        ls path [watch]
+        set path data [version]
+        rmr path
+        delquota [-n|-b] path
+        quit 
+        printwatches on|off
+        create [-s] [-e] path data acl
+        stat path [watch]
+        close 
+        ls2 path [watch]
+        history 
+        listquota path
+        setAcl path acl
+        getAcl path
+        sync path
+        redo cmdno
+        addauth scheme auth
+        delete path [version]
+        setquota -n|-b val path
+
+##显示节点
+[zk: 127.0.0.1:2181(CONNECTED) 2] ls /
+[testRootPath, wangx1, wangx4, zookeeper, wangx3, wangx]
+
+##创建一个节点
+[zk: 127.0.0.1:2181(CONNECTED) 5] create /wangx5 123
+Created /wangx5
+
+##查询一个节点
+[zk: 127.0.0.1:2181(CONNECTED) 6] get /wangx5
+123
+cZxid = 0x8d
+ctime = Mon Feb 04 14:16:50 CST 2013
+mZxid = 0x8d
+mtime = Mon Feb 04 14:16:50 CST 2013
+pZxid = 0x8d
+cversion = 0
+dataVersion = 0
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 3
+numChildren = 0
+
+##修改一个节点
+[zk: 127.0.0.1:2181(CONNECTED) 7] set /wangx5 456
+cZxid = 0x8d
+ctime = Mon Feb 04 14:16:50 CST 2013
+mZxid = 0x8e
+mtime = Mon Feb 04 14:17:19 CST 2013
+pZxid = 0x8d
+cversion = 0
+dataVersion = 1
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 3
+numChildren = 0
+
+##查询一个节点
+[zk: 127.0.0.1:2181(CONNECTED) 8] get /wangx5    
+456
+cZxid = 0x8d
+ctime = Mon Feb 04 14:16:50 CST 2013
+mZxid = 0x8e
+mtime = Mon Feb 04 14:17:19 CST 2013
+pZxid = 0x8d
+cversion = 0
+dataVersion = 1
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 3
+numChildren = 0
 
