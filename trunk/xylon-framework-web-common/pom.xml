@@ -104,6 +104,12 @@
 			<type>jar</type>
 		</dependency>
 		<!-- velocity end -->
+		
+		<dependency>
+			 <groupId>org.json</groupId>
+  			<artifactId>json</artifactId>
+  			<version>201111</version>
+		</dependency>
 	</dependencies>
 	
 </project>
