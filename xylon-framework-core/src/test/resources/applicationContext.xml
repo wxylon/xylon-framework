@@ -44,4 +44,15 @@
 			</map>
 		</constructor-arg>
 	</bean>
+	
+	<bean id="baseUser" class="com.xylon.framework.spring.expression.User">
+		<property name="name" value="ceshi1"></property>
+		<property name="abridge" value="ceshi2"></property>
+	</bean>
+	
+	<bean id="user" class="com.xylon.framework.spring.expression.User">
+		<!-- 直接引用属性 -->
+		<property name="name" value="#{baseUser.name.toUpperCase()}"></property>
+		<property name="abridge" value="#{baseUser.abridge.toUpperCase()}"></property>
+	</bean>
 </beans>

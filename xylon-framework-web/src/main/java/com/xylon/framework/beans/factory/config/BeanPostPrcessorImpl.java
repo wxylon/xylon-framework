@@ -14,21 +14,21 @@ public class BeanPostPrcessorImpl implements BeanPostProcessor {
 	// Bean 实例化之前进行的处理
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		String beanClassName = null;
-		if(null != bean){
+		if (null != bean) {
 			beanClassName = bean.getClass().getName();
 		}
-		System.out.println("对象" + beanName + "开始实例化,class:"+beanClassName);
+		System.out.println("对象" + beanName + "开始实例化,class:" + beanClassName);
 		return bean;
 	}
 
 	// Bean 实例化之后进行的处理
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		
+
 		String beanClassName = null;
-		if(null != bean){
+		if (null != bean) {
 			beanClassName = bean.getClass().getName();
 		}
-		System.out.println("对象" + beanName + "实例化完成, class:"+beanClassName);
+		System.out.println("对象" + beanName + "实例化完成, class:" + beanClassName);
 		return bean;
 	}
 }

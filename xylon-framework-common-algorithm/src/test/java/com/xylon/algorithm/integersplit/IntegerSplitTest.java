@@ -14,12 +14,12 @@ public class IntegerSplitTest {
 	
 //	@Test
 	public void testIntegerSplitByEunm(){
-		System.out.println(IntegerSplit.integerSplitByEunm(30));
+		System.out.println(IntegerSplit.integerSplitByEunm(3));
 	}
 	
-//	@Test
+	@Test
 	public void testRecursive(){
-		System.out.println(IntegerSplit.recursive(180, 180));
+		System.out.println(IntegerSplit.recursive(3, 3));
 	}
 }
 
