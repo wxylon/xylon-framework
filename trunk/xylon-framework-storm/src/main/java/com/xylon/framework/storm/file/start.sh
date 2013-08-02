@@ -1,0 +1,1 @@
+storm jar xylon-framework-storm-1.0.jar com.xylon.framework.storm.file.LogProcessTopology /opt/storm/tmp.txt , /opt/storm/xylon.txt
