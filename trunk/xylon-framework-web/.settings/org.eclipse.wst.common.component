@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="xylon-framework-web">
-        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/xylon-framework-common/xylon-framework-common">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <property name="context-root" value="xylon-framework-web"/>
         <property name="java-output-path" value="/xylon-framework-web/target/classes"/>
     </wb-module>

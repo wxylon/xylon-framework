@@ -4,8 +4,6 @@
 
 package com.xylon.common;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,33 +72,6 @@ public class ListUtils {
 			results.add(entry.getValue(), values.get(entry.getKey()));
 		}
 		return results;
-	}
-	
-	public static <T> void summary(List<T> sources, T summaryObject){
-		if(null == summaryObject){
-			throw new NullPointerException("summaryObject must not be " + summaryObject);
-		}
-		
-		Field[] fields = summaryObject.getClass().getDeclaredFields();
-		
-		Annotation[] annotations = summaryObject.getClass().getAnnotations();
-		for(Annotation annotation : annotations){
-			if(annotation instanceof OperatorControl){
-				OperatorControl control = (OperatorControl)annotation;
-				Computing[] computings = control.computing();
-				for(Computing computing : computings){
-					System.out.println(computing);
-				}
-			}else if(annotation instanceof Operator){
-				Operator control = (Operator)annotation;
-				CulomnComputing culomnComputing = control.culomnComputing();
-				System.out.println(culomnComputing);
-			}
-		}
-		
-		
-		for(int i = 0; i < sources.size()-1; i++){
-		}
 	}
 }
 

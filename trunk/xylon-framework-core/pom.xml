@@ -85,6 +85,12 @@
 			<version>${spring-version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>net.sourceforge.jchardet</groupId>
+			<artifactId>jchardet</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 	
 	<build>

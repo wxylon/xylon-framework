@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.xylon.framework.service.IService;
 
-@Service
+@Service(value="iserver")
 public class IServiceImpl implements IService {
 
 	public void hello() {

@@ -19,7 +19,7 @@ public class IntegerSplit {
 	 * @date 2012-8-14
 	 */
 	public static int integerSplitByEunm(int n){
-		//StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		if(n > 63){
 			throw new IllegalArgumentException(n+"");
 		}
@@ -27,16 +27,16 @@ public class IntegerSplit {
 		int count = 0;
 		for(int i = 1; i < t; i++){
 			int sum = 0;
-			//sb.delete(0, sb.length());
+			sb.delete(0, sb.length());
 			for(int j = 1; j <= n; j++){
 				if(((i >> (j - 1)) & 0x1) == 0x1){
 					sum += j;
-					//sb.append(j + ", ");
+					sb.append(j + ", ");
 				}
 			}
 			if(sum == n){
 				count++;
-				//System.out.println(sb.toString());
+				System.out.println(sb.toString());
 			}
 		}
 		return count;
@@ -57,7 +57,11 @@ public class IntegerSplit {
 		if( n == 0){
 			return 1;
 		}
-		return recursive(max - 1, n - max) + recursive(max-1, n);
+		
+		int k = recursive(max - 1, n - max);
+		int o = recursive(max-1, n);
+		System.out.println(String.format("max:%s\tn:%s", k, o));
+		return k + o;
 	}
 }
 

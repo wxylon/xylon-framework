@@ -87,6 +87,8 @@ public class NetSfJsonTests{
 	
 	@Test
 	public void testBean2Json() throws Exception{
+		System.out.println(JSONSerializer.toJSON(contents.get(0)));
+		
 		JSONArray jsonArray = (JSONArray) JSONSerializer.toJSON(contents);
 		System.out.println(jsonArray.toString());
 		
