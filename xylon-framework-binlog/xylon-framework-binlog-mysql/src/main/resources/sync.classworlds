@@ -1,0 +1,5 @@
+main is com.sync.MysqlSync from sync
+
+[sync]
+load ${sync.home}/lib/*.jar
+load ${sync.home}/lib/classes
