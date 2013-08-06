@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='GBK' ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS}[%t][%x][%-5p]%m method:%l%n"/>
+        </layout>
+    </appender>
+
+    <category name="com.jd" additivity="true">
+        <priority value="info"/>
+        <appender-ref ref="FILE-DEBUG"/>
+    </category>
+    
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</log4j:configuration>

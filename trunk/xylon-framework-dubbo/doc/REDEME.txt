@@ -2,3 +2,6 @@ note:
 	http://code.alibabatech.com/wiki/display/dubbo/Download-zh
 sources-install:
 	https://github.com/alibaba/dubbo
+	
+SPI:
+	http://blog.csdn.net/fenglibing/article/details/7083071
