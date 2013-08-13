@@ -5,3 +5,6 @@ sources-install:
 	
 SPI:
 	http://blog.csdn.net/fenglibing/article/details/7083071
+	
+cn-document:
+	http://code.alibabatech.com/wiki/pages/viewpage.action?pageId=6950697&navigatingVersions=true
