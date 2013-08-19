@@ -1,0 +1,5 @@
+mysql日期类型转long型：
+http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_unix-timestamp
+
+linux时区设置：
+http://linux.chinaunix.net/techdoc/system/2009/08/24/1131875.shtml
