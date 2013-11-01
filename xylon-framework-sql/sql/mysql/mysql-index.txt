@@ -1,0 +1,71 @@
+##查看创建表的语句;
+mysql> show create table Glossary_zh_en;
+
+
+mysql> desc select ID, Ttext  from Corpora_en_zh limit 0, 10;
++----+-------------+---------------+------+---------------+------+---------+------+---------+-------+
+| id | select_type | table         | type | possible_keys | key  | key_len | ref  | rows    | Extra |
++----+-------------+---------------+------+---------------+------+---------+------+---------+-------+
+|  1 | SIMPLE      | Corpora_en_zh | ALL  | NULL          | NULL | NULL    | NULL | 3797818 |       |
++----+-------------+---------------+------+---------------+------+---------+------+---------+-------+
+1 row in set (0.00 sec)
+
+
+mysql> desc select ID, Ttext  from Corpora_en_zh order by ID limit 0, 10;
++----+-------------+---------------+-------+---------------+---------+---------+------+------+-------+
+| id | select_type | table         | type  | possible_keys | key     | key_len | ref  | rows | Extra |
++----+-------------+---------------+-------+---------------+---------+---------+------+------+-------+
+|  1 | SIMPLE      | Corpora_en_zh | index | NULL          | PRIMARY | 8       | NULL |   10 |       |
++----+-------------+---------------+-------+---------------+---------+---------+------+------+-------+
+1 row in set (0.00 sec)
+
+
+mysql> desc select ID, Ttext  from Corpora_en_zh order by Ttext limit 0, 10;
++----+-------------+---------------+------+---------------+------+---------+------+---------+----------------+
+| id | select_type | table         | type | possible_keys | key  | key_len | ref  | rows    | Extra          |
++----+-------------+---------------+------+---------------+------+---------+------+---------+----------------+
+|  1 | SIMPLE      | Corpora_en_zh | ALL  | NULL          | NULL | NULL    | NULL | 3797818 | Using filesort |
++----+-------------+---------------+------+---------------+------+---------+------+---------+----------------+
+1 row in set (0.00 sec)
+
+## 创建索引：
+CREATE TABLE titles ( titleID ..., title ..., publID ..., year ..., PRIMARY KEY \dots, INDEX idxtitle (title))
+CREATE INDEX idxtitle ON title (title)
+ALTER TABLE titles ADD INDEX idxtitle (title)
+## 查看已存在的索引：
+SHOW INDEX FROM tablename
+DROP INDEX indexname ON tablename
+DROP INDEX 将删除 tablename 表上的 indexname 索引，indexname 就是我们创建表时指定的索引名。
+
+
+## 有索引的查询
+mysql> select ID, OTidc, Ttext  from Corpora_en_zh where OTidc = '93993354bb4830c068e0a702d6cad3e5fc3cca9753dda1399c36a51072d98fcd';
++----+------------------------------------------------------------------+----------------+
+| ID | OTidc                                                            | Ttext          |
++----+------------------------------------------------------------------+----------------+
+| 10 | 93993354bb4830c068e0a702d6cad3e5fc3cca9753dda1399c36a51072d98fcd | 要50美元。     |
++----+------------------------------------------------------------------+----------------+
+1 row in set (0.12 sec)
+
+mysql> drop index OTidc on Corpora_en_zh;
+Query OK, 3797818 rows affected (4 min 55.83 sec)
+Records: 3797818  Duplicates: 0  Warnings: 0
+
+mysql> select ID, OTidc, Ttext  from Corpora_en_zh where OTidc = '93993354bb4830c068e0a702d6cad3e5fc3cca9753dda1399c36a51072d98fcd';
++----+------------------------------------------------------------------+----------------+
+| ID | OTidc                                                            | Ttext          |
++----+------------------------------------------------------------------+----------------+
+| 10 | 93993354bb4830c068e0a702d6cad3e5fc3cca9753dda1399c36a51072d98fcd | 要50美元。     |
++----+------------------------------------------------------------------+----------------+
+1 row in set (31.25 sec)
+
+mysql> desc select ID, OTidc, Ttext  from Corpora_en_zh where OTidc = '93993354bb4830c068e0a702d6cad3e5fc3cca9753dda1399c36a51072d98fcd';
++----+-------------+---------------+------+---------------+------+---------+------+---------+-------------+
+| id | select_type | table         | type | possible_keys | key  | key_len | ref  | rows    | Extra       |
++----+-------------+---------------+------+---------------+------+---------+------+---------+-------------+
+|  1 | SIMPLE      | Corpora_en_zh | ALL  | NULL          | NULL | NULL    | NULL | 3797818 | Using where |
++----+-------------+---------------+------+---------------+------+---------+------+---------+-------------+
+1 row in set (0.03 sec)
+
+
+
