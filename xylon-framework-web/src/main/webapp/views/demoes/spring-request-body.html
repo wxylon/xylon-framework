@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="#springTheme('css')" type="text/css"/>
+<script type="text/javascript" src="http://localhost:8080/xylon-framework-web/script/jquery/jquery-1.5.2.js"></script>
+<script type="text/javascript" src="http://localhost:8080/xylon-framework-web/script/jquery/jquery.blockUI.js"></script>
+<!--meta http-equiv="X-UA-Compatible" content="IE=8" /-->
+<title>jquery.blockUI-demo</title>
+</head>
+<body>
+	<div style="margin-left: 500px; margin-top: 300px;">
+		用户名：<input type="text" value="" id="username">
+		密码：<input type="text" value="" id="password">
+		<input type="button" value="@RequestBody" id="clickbutton">
+	</div>
+</body>
+</html>
+<script type="text/javascript">  
+    $("#clickbutton").click(function(){
+    	
+        var saveData={username:$('#username').val(),password:$("#password").val()};  
+        $.ajax({ 
+            type:"POST", 
+            url:"http://localhost:8080/xylon-framework-web/requestBody", 
+            dataType:"json",      
+            contentType:"application/json",               
+            data:JSON.stringify(saveData), 
+            success:function(data){ 
+                alert(data);                
+            } 
+         }); 
+    });  
+</script>

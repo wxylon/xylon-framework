@@ -5,15 +5,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xylon.framework.service.IService;
 
 @Controller
-public class DynamicController{
+public class DynamicController extends GlobalController{
 	
 	private static Log log = LogFactory.getLog(DynamicController.class);
 	
@@ -41,6 +43,13 @@ public class DynamicController{
 	@RequestMapping(value = "/demoes/spring-local-theme.html", method = RequestMethod.GET)
 	public String d1(HttpServletRequest request, ModelMap model){
 		log.debug("DynamicController--->d1");
+		return "/demoes/spring-local-theme";
+	}
+	
+	@RequestMapping(value = "test", method = RequestMethod.GET)
+	public String d2(HttpServletRequest request, Integer id, ModelMap model){
+//		org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver
+		log.debug("DynamicController--->d1--->id:"+id);
 		return "/demoes/spring-local-theme";
 	}
 }
