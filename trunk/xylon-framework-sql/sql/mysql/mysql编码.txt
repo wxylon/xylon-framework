@@ -1,0 +1,64 @@
+环境：
+	ubuntu-12.04-x86
+	eclipse-4.2.0
+	jdk-1.6.0_45
+	mysql-5.5.32
+
+
+1.修改my.cnf配置：
+[mysqld]
+character-set-server=utf8
+
+[client]
+default-character-set=utf8
+
+
+2.查看创建数据库SQL的编码：
+mysql> show create database pluginplatform;
++----------------+-------------------------------------------------------------------------+
+| Database       | Create Database                                                         |
++----------------+-------------------------------------------------------------------------+
+| pluginplatform | CREATE DATABASE `pluginplatform` /*!40100 DEFAULT CHARACTER SET utf8 */ |
++----------------+-------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+
+3.查看mysql连接属性：
+mysql> SHOW VARIABLES LIKE 'character\_set\_%';
++--------------------------+--------+
+| Variable_name            | Value  |
++--------------------------+--------+
+| character_set_client     | utf8   |
+| character_set_connection | utf8   |
+| character_set_database   | utf8   |
+| character_set_filesystem | binary |
+| character_set_results    | utf8   |
+| character_set_server     | utf8   |
+| character_set_system     | utf8   |
++--------------------------+--------+
+7 rows in set (0.00 sec)
+註：其中 filesystem 會是 binary，此為正常的現象。
+
+
+4.排查创建表SQL是否有乱码：
+[root@ mysql]# mysqldump -u root -p --default-character-set=latin1 pluginplatform > pluginplatform.sql
+
+
+5.查看web客户端连接属性：
+[3960522]  DEBUG -            java.sql.Connection - ooo Using Connection [jdbc:mysql://192.168.194.222:3306/pluginplatform?useUnicode=true&amp;characterEncoding=UTF8, UserName=root@10.12.121.29, MySQL-AB JDBC Driver] 
+[3960522]  DEBUG -            java.sql.Connection - ==>  Preparing: insert into p_plugin_comment ( p_plugin_id, title, pin, author, create_date, version, level, flag, yn, body ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )  
+[3960524]  DEBUG -     java.sql.PreparedStatement - ==> Parameters: 1(Integer), ä½ å¥½(String), wxylon(String), 123(String), 2013-07-24 10:44:03.096(Timestamp), 1(String), 1(Integer), 1(String), 1(String), java.io.StringReader@501d5ebc(StringReader) 
+
+
+通过debug发现，action里接收到的数据就已经是乱码了，由此可以断定是webserver编码的问题了。
+
+
+解决：
+1.项目中用utf-8的，而Tomcat的默认编码则是iso-8859-1，
+因此我们通常编辑conf/下的server.xml，配置Connector项，加上属性URIEncoding="UTF-8"即可。
+这个只能解决get方式的 post方式还是需要用到request.setCharacterEncoding("utf-8");
+
+
+2.web.xml中的编码过滤器也不能少。
+
+

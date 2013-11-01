@@ -1,0 +1,44 @@
+1.nsq下载：
+	nsq-0.2.21.linux-amd64.go1.0.3.tar.gz
+	http://bitly.github.io/nsq/deployment/installing.html
+
+
+2.安装：
+wang@xylon:/opt/install/go$ sudo tar -zxvf nsq-0.2.21.linux-amd64.go1.0.3.tar.gz 
+
+wang@xylon:/opt/install/go/nsq-0.2.21.linux-amd64.go1.0.3$ chown -R wang:wang .
+
+wang@xylon:/opt/install/go/nsq-0.2.21.linux-amd64.go1.0.3$ ./bin/nsqd 
+2013/08/21 10:23:06 nsqd v0.2.21 (built w/go1.0.3)
+2013/08/21 10:23:06 worker id 757
+2013/08/21 10:23:06 NSQ: persisting topic/channel metadata to nsqd.757.dat
+2013/08/21 10:23:06 TCP: listening on [::]:4150
+2013/08/21 10:23:06 HTTP: listening on [::]:4151
+
+
+3.测试：
+	http://bitly.github.io/nsq/overview/quick_start.html
+	http://bitly.github.io/nsq/components/nsqd.html
+
+#测试服务
+wang@xylon:/$ curl  -I 'http://127.0.0.1:4151/ping'
+HTTP/1.1 200 OK
+Content-Length: 2
+Date: Wed, 21 Aug 2013 02:46:19 GMT
+
+#推送数据
+wang@xylon:/$  curl -d 'hello world 1' 'http://127.0.0.1:4151/put?topic=test'
+
+#查看数据
+wang@xylon:/$ curl 'http://127.0.0.1:4151/stats'
+nsqd v0.2.21 (built w/go1.0.3)
+
+[test           ] depth: 1     be-depth: 0     msgs: 1  
+
+#版本信息
+wang@xylon:/$ curl 'http://127.0.0.1:4151/info'
+{"status_code":200,"status_txt":"OK","data":{"version":"0.2.21"}}
+
+
+
+	
