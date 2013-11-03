@@ -1,0 +1,25 @@
+[root@hd-slave2 awk]# awk '/101/' test.log 
+#显示文件test.log中包含101的匹配行
+
+
+[root@hd-slave2 awk]# awk '/101/,/2013/' test.log                       
+#显示文件test.log中包含101, 2013(不区分先后顺序101，2013)的匹配行
+
+
+[root@hd-slave2 awk]# awk '$1=="2013-03-13"' test.log 
+#显示文件test.log中$1等于指定字符串的值的匹配行
+
+
+[root@hd-slave2 awk]# awk '{print $1"*"$2"="$1*$2}' test.log 
+2013-03-13*20:52:11,288=40260
+2013-03-13*20:52:11,289=40260
+2013-03-13*20:52:11,289=40260
+#左起截止第一个非数字之前的赋值
+
+
+[root@hd-slave2 awk]# awk '$1 ~ "2013" && $2 ~ "52:11"' test.log 
+#匹配第一块包含"2013"字符，第二块包含"52:11"字符
+
+
+[root@hd-slave2 awk]# awk '{print NR,NF,$1,$NF}' test.log  
+#显示文件file的当前记录号、域数和每一行的第一个和最后一个域

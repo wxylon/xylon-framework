@@ -1,0 +1,36 @@
+1.maven安装
+[root@hd1 opt]# vi /etc/profile
+
+MAVEN_HOME=/opt/apache-maven-2.2.1
+export MAVEN_HOME
+export PATH=${PATH}:${MAVEN_HOME}/bin
+
+[root@hd1 opt]# source /etc/profile
+
+##测试
+[root@hd1 opt]# mvn -v
+Apache Maven 2.2.1 (r801777; 2009-08-07 03:16:01+0800)
+Java version: 1.6.0_26
+Java home: /usr/java/jdk1.6.0_26/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux" version: "2.6.32-71.el6.i686" arch: "i386" Family: "unix"
+
+
+2. Python安装
+[root@hd1 opt]# tar -zxvf Python-2.7.2.tgz 
+[root@hd1 opt]# cd /opt/Python-2.7.2
+[root@hd1 Python-2.7.2]# ./configure --prefix-/opt/python2.7.2 --enable-shared
+##链接libz
+##需要zlib支持
+[root@hd1 Python-2.7.2]# ln -sf /lib/libz.so.1 /usr/lib/libz.so
+##重新安装python
+[root@hd1 Python-2.7.2]# ./configure --prefix=/opt/python2.7.2 --enable-shared --with-wide-unicode
+
+
+
+3.编译TimeTunnel
+
+[root@hd1 TimeTunnel]# pwd
+/opt/timeTunnel/TimeTunnel
+
+[root@hd1 TimeTunnel]# mvn clean install -Dmaven.test.skip=true
