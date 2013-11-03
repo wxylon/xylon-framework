@@ -11,6 +11,7 @@
 	
 	<mvc:view-controller path="menu.html" view-name="menu"/>
 	<mvc:view-controller path="jquery/blockUI/jquery_blockui.html" view-name="jquery/blockUI/jquery_blockui"/>
+	<mvc:view-controller path="custom/laidians.html" view-name="custom/laidians"/>
 	
 	<!-- 拦截器 -->
 	<mvc:interceptors>
