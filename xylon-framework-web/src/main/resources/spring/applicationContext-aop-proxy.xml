@@ -12,8 +12,8 @@
         http://www.springframework.org/schema/tx  
         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd ">
 		
-	<bean name="theBeforeAdvice" class="com.xylon.framework.web.aop.autoproxy.ManageBeforeAdvice"/>
-	<bean name="theAroundAdvice" class="com.xylon.framework.web.aop.autoproxy.AroundAdvice"/>
+	<bean name="theBeforeAdvice" class="com.xylon.framework.web.aop.autoproxy.XylonMethodBeforeAdvice"/>
+	<bean name="theAroundAdvice" class="com.xylon.framework.web.aop.autoproxy.XylonAroundAdvice"/>
 
 	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
 	    <property name="beanNames">   
