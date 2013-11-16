@@ -7,6 +7,7 @@ package com.xylon.framework.model;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -14,8 +15,8 @@ import javax.validation.constraints.Size;
  * @date 2013-10-20
  */
 public class Jss303User {
-	
-	@Size(min=3, max=20, message="用户名长度只能在3-20之间")
+	@NotNull(message="{NotNull.Jss303User.username}")
+	@Size(min=3, max=20, message="{Size.Jss303User.username}")
     private String username;
    
     private String password;

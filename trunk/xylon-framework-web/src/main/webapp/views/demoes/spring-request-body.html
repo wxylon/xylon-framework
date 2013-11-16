@@ -9,26 +9,61 @@
 <title>jquery.blockUI-demo</title>
 </head>
 <body>
-	<div style="margin-left: 500px; margin-top: 300px;">
-		用户名：<input type="text" value="" id="username">
-		密码：<input type="text" value="" id="password">
-		<input type="button" value="@RequestBody" id="clickbutton">
+	SpringMVC-jsr303(基于注解校验)
+	<div style="margin-left: 2px; ">
+		<input type="text" value="http://localhost:8080/xylon-framework-web/jss303Validator?username=&password=" size="100">
+		<input type="button" value="jsr303-self-bean" id="clickbutton">
 	</div>
+	SpringMVC-jsr303不支持单个参数绑定：Errors/BindingResult argument declared without preceding model attribute. Check your handler method signature!
+	<div style="margin-left: 2px; ">
+		<input type="text" value="http://localhost:8080/xylon-framework-web/jss303Validator0?pid=1" size="100">
+		<input type="button" value="jsr303-base-bean" id="clickbutton">
+	</div>
+	SpringMVC-Validator(基于编程式校验)
+	<div style="margin-left: 2px; ">
+		<input type="text" value="http://localhost:8080/xylon-framework-web/validator?username=12121&password=" size="100">
+		<input type="button" value="Spring-Validator" id="clickbutton">
+	</div>
+	SpringMVC-@RequestBody
+	<div style="margin-left: 2px; ">
+		<input type="text" value='http://localhost:8080/xylon-framework-web/requestBody?{“username”：“uname”, "password":"pwd"}' size="100">
+		<input type="button" value="@RequestBody" id="clickbutton">
+		<input type="button" value="@RequestBody" id="clickbutton-json">
+	</div>
+	<br/><br/>
+	返回值：
+	<textarea rows="5" cols="130" id="returnText"></textarea>
 </body>
 </html>
 <script type="text/javascript">  
-    $("#clickbutton").click(function(){
-    	
-        var saveData={username:$('#username').val(),password:$("#password").val()};  
-        $.ajax({ 
-            type:"POST", 
-            url:"http://localhost:8080/xylon-framework-web/requestBody", 
-            dataType:"json",      
-            contentType:"application/json",               
-            data:JSON.stringify(saveData), 
-            success:function(data){ 
-                alert(data);                
-            } 
-         }); 
-    });  
+    $("body div input[id=clickbutton]").click(function(){
+    	$("#returnText").html("");
+    	var url = $(this).parent().children("input[type=text]").val();
+    	if(''==url){
+    	}else{
+	        $.ajax({ 
+	            type:"get", 
+	            url:url, 
+	            success:function(data){
+	            	$("#returnText").html(JSON.stringify(data));
+	            } 
+	         }); 
+    	}
+    }); 
+    $("body div input[id=clickbutton-json]").click(function(){
+    	$("#returnText").html("");
+    	var url = $(this).parent().children("input[type=text]").val();
+    	if(''==url){
+    	}else{
+	        $.ajax({ 
+	            type:"get", 
+	            url:url, 
+	            contentType: "application/json",
+	            dataType: "json",
+	            success:function(data){
+	            	$("#returnText").html(JSON.stringify(data));
+	            } 
+	         }); 
+    	}
+    });
 </script>

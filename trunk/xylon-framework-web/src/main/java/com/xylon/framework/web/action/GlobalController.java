@@ -4,6 +4,7 @@
 
 package com.xylon.framework.web.action;
 
+import org.hibernate.validator.resourceloading.PlatformResourceBundleLocator;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
