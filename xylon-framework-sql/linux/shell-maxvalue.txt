@@ -1,0 +1,8 @@
+cat /export/home/tomcat/domains/*/*/conf/server.xml | grep "HTTP" | awk '{print $2}' | awk -F "=" '{print $2}' | sed 's/"//g' | awk 'BEGIN{x = $1} {for (i=1; i<=NF; i++)if($i > x) x = $i;}  END {print x}
+
+
+
+cat /export/home/tomcat/domains/*/*/conf/server.xml | grep "HTTP" | awk '{print $2}' | awk -F "=" '{print $2}' | sed 's/"//g' | sort | tail -n 1
+
+
+cat /export/home/tomcat/domains/*/*/conf/server.xml | grep "HTTP" | awk '{print $2}' | awk -F "=" '{print $2}' | sed 's/"//g' | awk '{if($1 > max)max = $1} END {print max}'
