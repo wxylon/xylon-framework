@@ -1,0 +1,9 @@
+1. 安装gnome-panel：
+      sudo apt-get install --no-install-recommends gnome-panel
+
+2. 创建程序快捷方式：
+      gnome-desktop-item-edit /home/wangxiong/Desktop/ --create-new
+
+3. 选择类型，输入名称和命令，点击确定，创建的快捷方式放在～/目录（可以拷贝到其他的目录里去）。
+
+4. 将创建好的程序快捷方式拖到启动器上即可（复制到桌面）。
