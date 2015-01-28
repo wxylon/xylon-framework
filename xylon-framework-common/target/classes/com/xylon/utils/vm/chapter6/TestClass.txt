@@ -1,0 +1,64 @@
+javap -verbose TestClass > TestClass.txt
+
+
+Compiled from "TestClass.java"
+public class com.xylon.utils.vm.chapter6.TestClass extends java.lang.Object
+  SourceFile: "TestClass.java"
+  minor version: 0
+  major version: 50
+  Constant pool:
+const #1 = class	#2;	//  com/xylon/utils/vm/chapter6/TestClass
+const #2 = Asciz	com/xylon/utils/vm/chapter6/TestClass;
+const #3 = class	#4;	//  java/lang/Object
+const #4 = Asciz	java/lang/Object;
+const #5 = Asciz	m;
+const #6 = Asciz	I;
+const #7 = Asciz	<init>;
+const #8 = Asciz	()V;
+const #9 = Asciz	Code;
+const #10 = Method	#3.#11;	//  java/lang/Object."<init>":()V
+const #11 = NameAndType	#7:#8;//  "<init>":()V
+const #12 = Asciz	LineNumberTable;
+const #13 = Asciz	LocalVariableTable;
+const #14 = Asciz	this;
+const #15 = Asciz	Lcom/xylon/utils/vm/chapter6/TestClass;;
+const #16 = Asciz	inc;
+const #17 = Asciz	()I;
+const #18 = Field	#1.#19;	//  com/xylon/utils/vm/chapter6/TestClass.m:I
+const #19 = NameAndType	#5:#6;//  m:I
+const #20 = Asciz	SourceFile;
+const #21 = Asciz	TestClass.java;
+
+{
+public com.xylon.utils.vm.chapter6.TestClass();
+  Code:
+   Stack=1, Locals=1, Args_size=1
+   0:	aload_0
+   1:	invokespecial	#10; //Method java/lang/Object."<init>":()V
+   4:	return
+  LineNumberTable: 
+   line 11: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      5      0    this       Lcom/xylon/utils/vm/chapter6/TestClass;
+
+
+public int inc();
+  Code:
+   Stack=2, Locals=1, Args_size=1
+   0:	aload_0
+   1:	getfield	#18; //Field m:I
+   4:	iconst_1
+   5:	iadd
+   6:	ireturn
+  LineNumberTable: 
+   line 16: 0
+
+  LocalVariableTable: 
+   Start  Length  Slot  Name   Signature
+   0      7      0    this       Lcom/xylon/utils/vm/chapter6/TestClass;
+
+
+}
+

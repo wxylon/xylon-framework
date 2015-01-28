@@ -1,0 +1,5 @@
+spring 3.1.x 中提供了自定义参数绑定功能
+	HandlerMethodArgumentResolver
+	
+通过interceptor中将参数获取到存放在request中，
+通过对HandlerMethodArgumentResolver的实现，自动将参数绑定到方法中

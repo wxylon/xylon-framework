@@ -1,0 +1,6 @@
+本例子来源：自定义的RPC的Java实现
+http://blog.csdn.net/theking119/article/details/6936923
+
+
+有类似的例子：
+http://code.google.com/p/rpcfx/
