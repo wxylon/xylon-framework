@@ -1,0 +1,33 @@
+## 查看安装文档
+more README
+wget http://download.redis.io/releases/redis-2.8.19.tar.gz
+tar -zxvf redis-2.8.19.tar.gz 
+cd redis-2.8.19/
+make
+make test
+cd utils/
+sudo ./install_server.sh
+
+
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+
+Port           : 6380
+Config file    : /etc/redis/6380.conf
+Log file       : /var/log/redis_6380.log
+Data dir       : /var/lib/redis/6380
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+
+
+./redis-server --port 9999 --slaveof 127.0.0.1 6379
+./redis-server /etc/redis/6379.conf --loglevel debug
+
+/usr/local/bin/redis-server /etc/redis/6379.conf --loglevel debug
+
+
+

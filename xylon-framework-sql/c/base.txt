@@ -1,0 +1,5 @@
+#ifndef __REDIS_H
+#endif
+
+find . -type f | sed 's/.*"\(.*\)".*/\1/' | awk '{print "\""$0"\""","}'
+

@@ -1,0 +1,2 @@
+## 清空日志
+cat /dev/null > /var/log/syslog  

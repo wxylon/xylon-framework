@@ -1,0 +1,10 @@
+In file included from redis.c:30:0:
+redis.h:51:17: fatal error: lua.h: No such file or directory
+ #include <lua.h>
+                 ^
+compilation terminated.
+[Finished in 0.1s with exit code 1]
+
+
+安装lua dev, lua love 插件
+https://packagecontrol.io/packages/Lua%20Love

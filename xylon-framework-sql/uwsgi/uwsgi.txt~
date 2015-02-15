@@ -1,0 +1,5 @@
+http://www.nowamagic.net/academy/detail/1330334
+
+
+## 关闭进程
+killall  -9 uwsgi

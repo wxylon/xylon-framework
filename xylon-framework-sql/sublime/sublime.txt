@@ -1,0 +1,11 @@
+In file included from redis.c:30:0:
+redis.h:51:17: fatal error: lua.h: No such file or directory
+ #include <lua.h>
+                 ^
+compilation terminated.
+[Finished in 0.2s with exit code 1]
+
+
+解决:
+sudo apt-get install liblua5.2-dev
+sudo updatedb
