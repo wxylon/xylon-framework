@@ -1,0 +1,23 @@
+1. IntelliJ IDEA的背景如何设置成官网上的黑色主题
+File > Settings >　Apperence  》theme里选择 Darcula，我的是V12
+
+2. 代码忽略大小写;
+http://jingyan.baidu.com/article/fc07f98975f00d12fee5195d.html
+
+3. alt + / 提示
+文件File-设置setting-Keymap 搜索 completion,--->smart type 找到ctrl+空格的快捷键,删除旧的值,然后添加新的值alt+/,保存退出,就可以实现代码提示
+
+4. 快捷键:
+https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf
+
+5. 中文乱码
+http://blog.csdn.net/cuiweijie3/article/details/11916151
+http://nornor.net/Intellij-IDEA-gbk-fix.htm
+http://blog.csdn.net/zht666/article/details/8953516
+http://blog.sina.com.cn/s/blog_4c480f1701000a2x.html
+
+
+
+curl -d "orderno=cta150403143621516&mobile=18600640011&prenum=86&querytype=3" "http://l-api.user.qunar.com/api/queryorder"
+
+

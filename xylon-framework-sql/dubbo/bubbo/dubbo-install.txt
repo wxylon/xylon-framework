@@ -1,0 +1,2 @@
+zk: http://mirrors.hust.edu.cn/apache/zookeeper/
+
