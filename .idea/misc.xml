@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/xylon-framework-core/doc" />
+    <file type="web" url="file://$PROJECT_DIR$/xylon-framework-quartz" />
+    <file type="web" url="file://$PROJECT_DIR$/xylon-framework-web" />
+    <file type="web" url="file://$PROJECT_DIR$/xylon-framework-web-common" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/xylon-framework-cxf/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-orm/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-spi/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-sql/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-web/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-spring-ibatis/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-core/doc/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-core/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-osgi/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-cglib/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-dubbo/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-hbase/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-mongo/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-storm/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-binlog/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-common/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-drools/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-hadoop/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-quartz/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-zookeeper/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-web-common/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-serialization/pom.xml" />
+        <option value="$PROJECT_DIR$/xylon-framework-common-algorithm/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

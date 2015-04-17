@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="xylon-framework-quartz:war exploded">
+    <output-path>$PROJECT_DIR$/xylon-framework-quartz/target/xylon-framework-quartz-1.0</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="xylon-framework-quartz" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.quartz-scheduler:quartz:1.8.4" />
+          <element id="library" level="project" name="Maven: javax.transaction:jta:1.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.0" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.4" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/xylon-framework-quartz/target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="xylon-framework-quartz/web/Web" />
+    </root>
+  </artifact>
+</component>

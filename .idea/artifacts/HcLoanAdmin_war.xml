@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="HcLoanAdmin:war">
+    <output-path>$PROJECT_DIR$/xylon-framework-core/doc/target</output-path>
+    <root id="archive" name="HcLoanAdmin.war">
+      <element id="artifact" artifact-name="HcLoanAdmin:war exploded" />
+    </root>
+  </artifact>
+</component>

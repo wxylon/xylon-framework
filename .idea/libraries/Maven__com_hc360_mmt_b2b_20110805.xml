@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.hc360.mmt:b2b:20110805">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hc360/mmt/b2b/20110805/b2b-20110805.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hc360/mmt/b2b/20110805/b2b-20110805-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hc360/mmt/b2b/20110805/b2b-20110805-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

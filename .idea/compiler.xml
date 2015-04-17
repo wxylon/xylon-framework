@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="HcLoanAdmin" />
+        <module name="xylon-framework-binlog-mysql" />
+        <module name="xylon-framework-cglib" />
+        <module name="xylon-framework-common" />
+        <module name="xylon-framework-common-algorithm" />
+        <module name="xylon-framework-core" />
+        <module name="xylon-framework-cxf" />
+        <module name="xylon-framework-drools" />
+        <module name="xylon-framework-dubbo" />
+        <module name="xylon-framework-hadoop" />
+        <module name="xylon-framework-hbase" />
+        <module name="xylon-framework-mongo-driver" />
+        <module name="xylon-framework-mongo-spring" />
+        <module name="xylon-framework-orm-ibatis" />
+        <module name="xylon-framework-osgi" />
+        <module name="xylon-framework-quartz" />
+        <module name="xylon-framework-serialization-flexjson" />
+        <module name="xylon-framework-serialization-hessian" />
+        <module name="xylon-framework-serialization-javolution" />
+        <module name="xylon-framework-serialization-kryo" />
+        <module name="xylon-framework-serialization-xstream" />
+        <module name="xylon-framework-spi" />
+        <module name="xylon-framework-sql" />
+        <module name="xylon-framework-storm" />
+        <module name="xylon-framework-web" />
+        <module name="xylon-framework-web-common" />
+        <module name="xylon-framework-zookeeper" />
+        <module name="xylon-spring-ibatis" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="HcLoanAdmin" target="1.6" />
+      <module name="xylon-framework-binlog" target="1.5" />
+      <module name="xylon-framework-binlog-mysql" target="1.6" />
+      <module name="xylon-framework-cglib" target="1.6" />
+      <module name="xylon-framework-common" target="1.6" />
+      <module name="xylon-framework-common-algorithm" target="1.6" />
+      <module name="xylon-framework-core" target="1.6" />
+      <module name="xylon-framework-cxf" target="1.5" />
+      <module name="xylon-framework-drools" target="1.6" />
+      <module name="xylon-framework-dubbo" target="1.6" />
+      <module name="xylon-framework-hadoop" target="1.6" />
+      <module name="xylon-framework-hbase" target="1.6" />
+      <module name="xylon-framework-mongo" target="1.5" />
+      <module name="xylon-framework-mongo-driver" target="1.6" />
+      <module name="xylon-framework-mongo-spring" target="1.6" />
+      <module name="xylon-framework-orm" target="1.5" />
+      <module name="xylon-framework-orm-ibatis" target="1.6" />
+      <module name="xylon-framework-osgi" target="1.6" />
+      <module name="xylon-framework-parent" target="1.5" />
+      <module name="xylon-framework-quartz" target="1.6" />
+      <module name="xylon-framework-serialization" target="1.5" />
+      <module name="xylon-framework-serialization-flexjson" target="1.6" />
+      <module name="xylon-framework-serialization-hessian" target="1.6" />
+      <module name="xylon-framework-serialization-javolution" target="1.6" />
+      <module name="xylon-framework-serialization-kryo" target="1.6" />
+      <module name="xylon-framework-serialization-xstream" target="1.6" />
+      <module name="xylon-framework-spi" target="1.6" />
+      <module name="xylon-framework-sql" target="1.6" />
+      <module name="xylon-framework-storm" target="1.6" />
+      <module name="xylon-framework-web" target="1.6" />
+      <module name="xylon-framework-web-common" target="1.6" />
+      <module name="xylon-framework-zookeeper" target="1.6" />
+      <module name="xylon-spring-ibatis" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

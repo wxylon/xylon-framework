@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-core/doc/HcLoanAdmin.iml" filepath="$PROJECT_DIR$/xylon-framework-core/doc/HcLoanAdmin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-binlog/xylon-framework-binlog.iml" filepath="$PROJECT_DIR$/xylon-framework-binlog/xylon-framework-binlog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-binlog/xylon-framework-binlog-mysql/xylon-framework-binlog-mysql.iml" filepath="$PROJECT_DIR$/xylon-framework-binlog/xylon-framework-binlog-mysql/xylon-framework-binlog-mysql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-cglib/xylon-framework-cglib.iml" filepath="$PROJECT_DIR$/xylon-framework-cglib/xylon-framework-cglib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-common/xylon-framework-common.iml" filepath="$PROJECT_DIR$/xylon-framework-common/xylon-framework-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-common-algorithm/xylon-framework-common-algorithm.iml" filepath="$PROJECT_DIR$/xylon-framework-common-algorithm/xylon-framework-common-algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-core/xylon-framework-core.iml" filepath="$PROJECT_DIR$/xylon-framework-core/xylon-framework-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-cxf/xylon-framework-cxf.iml" filepath="$PROJECT_DIR$/xylon-framework-cxf/xylon-framework-cxf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-drools/xylon-framework-drools.iml" filepath="$PROJECT_DIR$/xylon-framework-drools/xylon-framework-drools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-dubbo/xylon-framework-dubbo.iml" filepath="$PROJECT_DIR$/xylon-framework-dubbo/xylon-framework-dubbo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-hadoop/xylon-framework-hadoop.iml" filepath="$PROJECT_DIR$/xylon-framework-hadoop/xylon-framework-hadoop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-hbase/xylon-framework-hbase.iml" filepath="$PROJECT_DIR$/xylon-framework-hbase/xylon-framework-hbase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-mongo/xylon-framework-mongo.iml" filepath="$PROJECT_DIR$/xylon-framework-mongo/xylon-framework-mongo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-mongo/xylon-framework-mongo-driver/xylon-framework-mongo-driver.iml" filepath="$PROJECT_DIR$/xylon-framework-mongo/xylon-framework-mongo-driver/xylon-framework-mongo-driver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-mongo/xylon-framework-mongo-spring/xylon-framework-mongo-spring.iml" filepath="$PROJECT_DIR$/xylon-framework-mongo/xylon-framework-mongo-spring/xylon-framework-mongo-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-orm/xylon-framework-orm.iml" filepath="$PROJECT_DIR$/xylon-framework-orm/xylon-framework-orm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-orm/xylon-framework-orm-ibatis/xylon-framework-orm-ibatis.iml" filepath="$PROJECT_DIR$/xylon-framework-orm/xylon-framework-orm-ibatis/xylon-framework-orm-ibatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-osgi/xylon-framework-osgi.iml" filepath="$PROJECT_DIR$/xylon-framework-osgi/xylon-framework-osgi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-parent/xylon-framework-parent.iml" filepath="$PROJECT_DIR$/xylon-framework-parent/xylon-framework-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-quartz/xylon-framework-quartz.iml" filepath="$PROJECT_DIR$/xylon-framework-quartz/xylon-framework-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization.iml" filepath="$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-flexjson/xylon-framework-serialization-flexjson.iml" filepath="$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-flexjson/xylon-framework-serialization-flexjson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-hessian/xylon-framework-serialization-hessian.iml" filepath="$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-hessian/xylon-framework-serialization-hessian.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-javolution/xylon-framework-serialization-javolution.iml" filepath="$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-javolution/xylon-framework-serialization-javolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-kryo/xylon-framework-serialization-kryo.iml" filepath="$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-kryo/xylon-framework-serialization-kryo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-xstream/xylon-framework-serialization-xstream.iml" filepath="$PROJECT_DIR$/xylon-framework-serialization/xylon-framework-serialization-xstream/xylon-framework-serialization-xstream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-spi/xylon-framework-spi.iml" filepath="$PROJECT_DIR$/xylon-framework-spi/xylon-framework-spi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-sql/xylon-framework-sql.iml" filepath="$PROJECT_DIR$/xylon-framework-sql/xylon-framework-sql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-storm/xylon-framework-storm.iml" filepath="$PROJECT_DIR$/xylon-framework-storm/xylon-framework-storm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-web/xylon-framework-web.iml" filepath="$PROJECT_DIR$/xylon-framework-web/xylon-framework-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-web-common/xylon-framework-web-common.iml" filepath="$PROJECT_DIR$/xylon-framework-web-common/xylon-framework-web-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-framework-zookeeper/xylon-framework-zookeeper.iml" filepath="$PROJECT_DIR$/xylon-framework-zookeeper/xylon-framework-zookeeper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xylon-spring-ibatis/xylon-spring-ibatis.iml" filepath="$PROJECT_DIR$/xylon-spring-ibatis/xylon-spring-ibatis.iml" />
+    </modules>
+  </component>
+</project>

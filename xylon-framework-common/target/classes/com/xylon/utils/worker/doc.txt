@@ -1,0 +1,52 @@
+	public static void main(String[] args) {
+	    for(String arg : args){
+	    	System.out.println(arg);
+	    }
+	}
+	
+java com.xylon.utils.worker.SkucostWorker d d d d d d d
+	d d d d d d d 为args获得的参数
+	
+-Xms32m 
+	设置虚拟机可用内存堆的初始大小，缺省单位为字节，该大小为1024的整数倍并且要大于1MB，可用k(K)或m(M)为单位来设置较大的内存数。初始堆大小为2MB。
+	例如：-Xms6400K，-Xms256M
+	
+-Xmx800m
+	设置虚拟机内存堆的最大可用大小，缺省单位为字节。该值必须为1024整数倍，并且要大于2MB。可用k(K)或m(M)为单位来设置较大的内存数。缺省堆最大值为64MB。
+	例如：-Xmx81920K，-Xmx80M
+
+-DworkerKey=skucost.worker
+	在虚拟机的系统属性中设置属性名/值对，运行在此虚拟机之上的应用程序可用System.getProperty(“propertyName”)得到value的值。
+	如果value中有空格，则需要用双引号将该值括起来，如-Dname=”space string”。
+	该参数通常用于设置系统级全局变量值，如配置文件路径，应为该属性在程序中任何地方都可访问。
+		eg:  -Dname1=123 -Dname2=234
+		System.out.println(System.getProperty("name1"));
+	    System.out.println(System.getProperty("name2"));
+		不存在将返回<b>null</b>对象
+		
+-classpath,-cp
+	虚拟机在运行一个类时，需要将其装入内存，虚拟机搜索类的方式和顺序如下：
+	Bootstrap classes，Extension classes，User classes。
+	Bootstrap 中的路径是虚拟机自带的jar或zip文件，虚拟机首先搜索这些包文件，用System.getProperty("sun.boot.class.path")可得到虚拟机搜索的包名。
+	Extension是位于jre"lib"ext目录下的jar文件，虚拟机在搜索完Bootstrap后就搜索该目录下的jar文件。用System. getProperty("java.ext.dirs”)可得到虚拟机使用Extension搜索路径。
+	User classes搜索顺序为当前目录、环境变量 CLASSPATH、-classpath。
+-classpath
+	告知虚拟机搜索目录名、jar文档名、zip文档名，之间用分号;分隔。
+	例如当你自己开发了公共类并包装成一个common.jar包，在使用 common.jar中的类时，就需要用-classpath common.jar 告诉虚拟机从common.jar中查找该类，否则虚拟机就会抛出java.lang.NoClassDefFoundError异常，表明未找到类定义。 
+	在运行时可用System.getProperty(“java.class.path”)得到虚拟机查找类的路径。
+	
+	使用-classpath后虚拟机将不再使用CLASSPATH中的类搜索路径，如果-classpath和CLASSPATH都没有设置，则虚拟机使用当前路径(.)作为类搜索路径。
+	推荐使用-classpath来定义虚拟机要搜索的类路径，而不要使用环境变量 CLASSPATH的搜索路径，以减少多个项目同时使用CLASSPATH时存在的潜在冲突。例如应用1要使用a1.0.jar中的类G，应用2要使用 a2.0.jar中的类G,a2.0.jar是a1.0.jar的升级包，当a1.0.jar，a2.0.jar都在CLASSPATH中，虚拟机搜索到第一个包中的类G时就停止搜索，如果应用1应用2的虚拟机都从CLASSPATH中搜索，就会有一个应用得不到正确版本的类G。
+	eg:
+		System.getProperty("sun.boot.class.path")
+		C:\Program Files\Java\jre6\lib\resources.jar;C:\Program Files\Java\jre6\lib\rt.j
+		ar;C:\Program Files\Java\jre6\lib\sunrsasign.jar;C:\Program Files\Java\jre6\lib\
+		jsse.jar;C:\Program Files\Java\jre6\lib\jce.jar;C:\Program Files\Java\jre6\lib\c
+		harsets.jar;C:\Program Files\Java\jre6\classes
+		
+		System.getProperty("java.ext.dirs")
+		C:\Program Files\Java\jre6\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+		
+		System.getProperty("java.class.path")
+		.;C:\Program Files\Java\jdk1.6.0_10\bin;C:\Program Files\Java\jdk1.6.0_10\jre\bin
+		

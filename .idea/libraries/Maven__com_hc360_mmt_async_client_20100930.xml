@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.hc360.mmt:async-client:20100930">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hc360/mmt/async-client/20100930/async-client-20100930.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hc360/mmt/async-client/20100930/async-client-20100930-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/hc360/mmt/async-client/20100930/async-client-20100930-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
