@@ -6,3 +6,6 @@ cat /export/home/tomcat/domains/*/*/conf/server.xml | grep "HTTP" | awk '{print 
 
 
 cat /export/home/tomcat/domains/*/*/conf/server.xml | grep "HTTP" | awk '{print $2}' | awk -F "=" '{print $2}' | sed 's/"//g' | awk '{if($1 > max)max = $1} END {print max}'
+
+
+curl -Is -m3 http://l-ffdev2.f.dev.cn0.qunar.com:8089/h5/ | head -n 1 | cut -d ' ' -f2
